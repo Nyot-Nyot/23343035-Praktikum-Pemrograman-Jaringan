@@ -1,8 +1,8 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Praktikum%20Pemograman%20Jaringan&section=header&fontSize=40&desc=Node.js%20|%20MonggoDB%20|%20Express.js%20|%20Git%20|%20Vercel&descAlignY=57&fontAlignY=45)
 
-**👨‍💻 Dzaki Sultan Rabbani** — Informatika UNP
-📘 *Praktikum Pemrograman Jaringan* | INF1.62.5010
-👨‍🏫 Randi Proska Sandra, S.Pd., M.Sc
+**👨‍💻 Dzaki Sultan Rabbani** — Informatika UNP<bt>
+📘 *Praktikum Pemrograman Jaringan* | INF1.62.5010<br>
+👨‍🏫 Randi Proska Sandra, S.Pd., M.Sc<br>
 
 ---
 
@@ -46,7 +46,7 @@ Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1
 | Minggu | Topik Praktikum | Deskripsi Singkat | Status |
 |:-------:|-----------------|------------------|:------:|
 | 1–4 | Pengantar & JavaScript Essentials | Eksplorasi mandiri konsep dasar Node.js & JavaScript | — |
-| 5 | Non-Blocking I/O & Asynchronous Programming | Implementasi asynchronous dan sistem modular Node.js | ⏳ |
+| 5 | [Non-Blocking I/O & Asynchronous Programming](week-05/laporan-minggu-05.md) | Implementasi asynchronous dan sistem modular Node.js | ✅ |
 | 6 | HTTP Protocol & API | Dasar komunikasi antara klien dan server | ⏳ |
 | 7 | Web Server & Express.js | Membangun web server menggunakan Express | ⏳ |
 | 8 | API Endpoints & Architectural Patterns | Penerapan pola REST, GraphQL, WebSocket, dan WebHook | ⏳ |
@@ -63,24 +63,30 @@ Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1
 
 ## 🧩 Struktur Repositori
 ```
-
-├── /docs
-│ ├── week-05.md
-│ ├── week-06.md
-│ ├── week-07.md
-│ ├── ...
-│ └── week-15.md
-├── /src
-│ ├── server/
-│ ├── routes/
-│ ├── controllers/
-│ ├── models/
-│ └── utils/
-├── /public
-│ └── assets/
-├── package.json
+├── /week-05/
+│   ├── report.md
+│   └── /project/
+│       ├── server.js
+│       ├── package.json
+│       └── ...
+├── /week-06/
+│   ├── report.md
+│   └── /project/
+│       ├── app.js
+│       └── ...
+├── /week-07/
+│   ├── report.md
+│   └── /project/
+│       └── ...
+├── /week-08/
+│   ├── report.md
+│   └── /project/
+│       └── ...
+├── /assets/
+│   └── images/
 ├── README.md
 └── .gitignore
+
 
 ```
 
