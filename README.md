@@ -1,73 +1,107 @@
-# Praktikum Pemrograman Jaringan  
-**Mata Kuliah:** INF1.62.5010 - Praktikum Pemrograman Jaringan 
-**Dosen Pengampu:** Randi Proska Sandra, M.Sc  
+![header](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Praktikum%20Pemograman%20Jaringan&section=header&fontSize=40&desc=Node.js%20|%20MonggoDB%20|%20Express.js%20|%20Git%20|%20Vercel&descAlignY=57&fontAlignY=45)
+
+**👨‍💻 Dzaki Sultan Rabbani** — Informatika UNP
+📘 *Praktikum Pemrograman Jaringan* | INF1.62.5010
+👨‍🏫 Randi Proska Sandra, S.Pd., M.Sc
 
 ---
 
-## 👤 Identitas  
-- **Nama:** Dzaki Sultan Rabbani  
-- **NIM:** 23343035  
-- **Program Studi:** Informatika – Fakultas Teknik, Universitas Negeri Padang  
-- **Kontak:** dzakisultan012@gmail.com  
+<br>
+<p align="center">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/NodeJS/nodejs1.svg">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Express/express1.svg">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/MongoDB/mongodb1.svg">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Git/git1.svg">
+  <img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Vercel/vercel1.svg">
+</p>
 
 ---
 
-## 📌 Table of Contents  
-- [Struktur Repository](#-struktur-repository)  
-- [Daftar JobSheet](#-daftar-jobsheet)  
-- [Referensi](#-referensi)  
+
+## 📖 Deskripsi Umum
+Repositori ini merupakan dokumentasi resmi kegiatan **Praktikum Pemrograman Jaringan**, yang berfokus pada pengembangan aplikasi berbasis jaringan menggunakan **Node.js** dan teknologi pendukungnya.
+
+Seluruh kegiatan praktikum disusun secara berkelanjutan dari minggu ke minggu, dengan tujuan akhir menghasilkan sebuah **aplikasi web berbasis jaringan** yang mengimplementasikan seluruh konsep yang telah dipelajari.
 
 ---
 
-## 📂 Struktur Repository  
-Repository ini berisi hasil praktikum **Pemrograman Jaringan**.  
-Setiap folder diatur berdasarkan nomor dan topik JobSheet.  
+## 🎯 Capaian Pembelajaran Mata Kuliah (CPMK)
+| No | Capaian Pembelajaran |
+|----|-----------------------|
+| 1 | Mengidentifikasi dan menjelaskan konsep dasar pemrograman berbasis jaringan serta aplikasinya pada sistem yang bersifat skalabel. |
+| 2 | Membedakan pemrograman sinkron dan asinkron, serta memahami konsep I/O blocking dan non-blocking. |
+| 3 | Mengimplementasikan bahasa pemrograman **JavaScript** dalam pengembangan aplikasi berbasis jaringan. |
+| 4 | Menjelaskan mekanisme **HTTP/HTTPS** serta konsep dasar **API**. |
+| 5 | Merancang **web server** dan **JSON HTTP endpoints** untuk pertukaran data dalam konteks aplikasi berbasis jaringan. |
+| 6 | Memahami penggunaan **Git** untuk version control dan melakukan **deployment** aplikasi. |
+| 7 | Membangun **REST API** menggunakan basis data **NoSQL (MongoDB)**. |
+| 8 | Menjelaskan serta merancang mekanisme protokol **SMTP** dan **POP3** dalam pengiriman email. |
+| 9 | Mengembangkan aplikasi jaringan dengan komunikasi **real-time** menggunakan **Socket Programming**. |
 
-**Format folder:**  
+---
+
+## 🗓️ Rencana dan Dokumentasi Praktikum
+Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1–4** merupakan kegiatan eksplorasi mandiri dari sumber luar (tanpa laporan).
+
+| Minggu | Topik Praktikum | Deskripsi Singkat | Status |
+|:-------:|-----------------|------------------|:------:|
+| 1–4 | Pengantar & JavaScript Essentials | Eksplorasi mandiri konsep dasar Node.js & JavaScript | — |
+| 5 | Non-Blocking I/O & Asynchronous Programming | Implementasi asynchronous dan sistem modular Node.js | ⏳ |
+| 6 | HTTP Protocol & API | Dasar komunikasi antara klien dan server | ⏳ |
+| 7 | Web Server & Express.js | Membangun web server menggunakan Express | ⏳ |
+| 8 | API Endpoints & Architectural Patterns | Penerapan pola REST, GraphQL, WebSocket, dan WebHook | ⏳ |
+| 9 | Evaluasi Tengah Semester | Proyek mini untuk menilai pemahaman konsep dasar | 🔒 |
+| 10 | Version Control & App Deployment | Implementasi Git Workflow & deployment aplikasi | ⏳ |
+| 11 | MongoDB & NoSQL Databases | Integrasi MongoDB sebagai basis data aplikasi | ⏳ |
+| 12 | NoSQL Databases (Lanjutan) | Query lanjutan dan integrasi REST API | ⏳ |
+| 13 | Protokol Email (SMTP, POP3, IMAP) | Simulasi sistem pengiriman dan penerimaan email | ⏳ |
+| 14 | Socket Programming | Implementasi komunikasi real-time berbasis socket | ⏳ |
+| 15 | Capstone Project | Integrasi seluruh materi menjadi satu aplikasi utuh | 🔜 |
+| 16 | Ujian Akhir Semester | Presentasi dan evaluasi hasil akhir proyek | 🔒 |
+
+---
+
+## 🧩 Struktur Repositori
 ```
-JobSheet X – [Topik]
+
+├── /docs
+│ ├── week-05.md
+│ ├── week-06.md
+│ ├── week-07.md
+│ ├── ...
+│ └── week-15.md
+├── /src
+│ ├── server/
+│ ├── routes/
+│ ├── controllers/
+│ ├── models/
+│ └── utils/
+├── /public
+│ └── assets/
+├── package.json
+├── README.md
+└── .gitignore
+
 ```
 
-**Contoh:**  
-```
-JobSheet 1 – Pengantar Node.js
-```
+Setiap laporan mingguan disimpan pada direktori `/docs`, sedangkan implementasi kode program ditempatkan di dalam direktori `/src`.
 
 ---
 
-## 📑 Daftar JobSheet  
-
-### ✅ JobSheet 1 – Pengantar Node.js  
-Pemanasan untuk kenalan dengan **Node.js**: setup environment, membuat server sederhana, dan memahami arsitektur event-driven.  
-[Source Code](./JobSheet%201%20–%20Pengantar%20Node.js)  
-
-### ⏳ JobSheet 2 – JavaScript Essentials  
-Mempelajari dasar-dasar **JavaScript** yang mendukung pengembangan aplikasi berbasis jaringan. Fokus ke sintaks, tipe data, kontrol alur, serta modularisasi kode.  
-[Source Code](./JobSheet%202%20–%20JavaScript%20Essentials)  
-
-### ⏳ JobSheet 3 – JavaScript Asynchronous  
-Pendalaman **asynchronous programming**: callback, promise, async/await, dan penggunaan `fetch()` untuk request API.  
-[Source Code](./JobSheet%203%20–%20JavaScript%20Asynchronous)  
-
-### ⏳ JobSheet 4 – HTTP & API  
-Memahami dasar **HTTP/HTTPS**, request/response, dan praktik membangun endpoint sederhana.  
-[Source Code](./JobSheet%204%20–%20HTTP%20%26%20API)  
-
-*(lanjutkan sesuai jumlah JobSheet berikutnya)*  
+## 🚀 Capstone Project
+Pada tahap akhir praktikum, mahasiswa akan mengembangkan **aplikasi web berbasis jaringan** yang mengintegrasikan seluruh materi yang telah dipelajari, meliputi:
+- API modular dengan **Express.js**
+- Integrasi **MongoDB** sebagai database utama
+- Komunikasi **real-time** menggunakan Socket.IO
+- Implementasi **email protocol** dengan Nodemailer
+- Deployment aplikasi ke server publik
 
 ---
 
-## 📚 Referensi  
-- Dokumentasi resmi:  
-  - [Node.js](https://nodejs.org/en/docs/)  
-  - [JavaScript MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  
-  - [Express.js](https://expressjs.com/)  
-  - [MongoDB](https://www.mongodb.com/docs/)  
-- [Beautify GitHub Profile](https://github.com/rzashakeri/beautify-github-profile)  
+## 🧾 Catatan
+Repositori ini disusun sebagai bagian dari penilaian mata kuliah **Praktikum Pemrograman Jaringan**.
+Seluruh laporan, kode, dan dokumentasi dibuat dengan tujuan pembelajaran dan pengembangan kompetensi dalam bidang pemrograman jaringan.
 
 ---
 
-## 🛠️ Tech Stack  
-![Node.js](https://ziadoua.github.io/m3-Markdown-Badges/badges/NodeJS/nodejs1.svg)  ![JavaScript](https://ziadoua.github.io/m3-Markdown-Badges/badges/Javascript/javascript3.svg)  ![Express.js](https://ziadoua.github.io/m3-Markdown-Badges/badges/Express/express1.svg)  ![MongoDB](https://ziadoua.github.io/m3-Markdown-Badges/badges/MongoDB/mongodb1.svg)  ![Git](https://ziadoua.github.io/m3-Markdown-Badges/badges/Git/git1.svg)  
-
----
+> _“Pemrograman jaringan bukan hanya tentang koneksi antar komputer, tetapi juga tentang memahami bagaimana sistem berkomunikasi secara efisien dan andal.”_
