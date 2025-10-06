@@ -1,6 +1,6 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Praktikum%20Pemograman%20Jaringan&section=header&fontSize=40&desc=Node.js%20|%20MonggoDB%20|%20Express.js%20|%20Git%20|%20Vercel&descAlignY=57&fontAlignY=45)
 
-**👨‍💻 Dzaki Sultan Rabbani** — Informatika UNP<bt>
+**👨‍💻 Dzaki Sultan Rabbani** — Informatika UNP<br>
 📘 *Praktikum Pemrograman Jaringan* | INF1.62.5010<br>
 👨‍🏫 Randi Proska Sandra, S.Pd., M.Sc<br>
 
