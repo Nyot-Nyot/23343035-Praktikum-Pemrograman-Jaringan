@@ -1,7 +1,7 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Praktikum%20Pemograman%20Jaringan&section=header&fontSize=40&desc=Node.js%20|%20MonggoDB%20|%20Express.js%20|%20Git%20|%20Vercel&descAlignY=57&fontAlignY=45)
 
-**👨‍💻 Dzaki Sultan Rabbani** — Informatika UNP<br>
-📘 _Praktikum Pemrograman Jaringan_ | INF1.62.5010<br>
+👨‍💻 Dzaki Sultan Rabbani — Informatika UNP<br>
+📘 Praktikum Pemrograman Jaringan | INF1.62.5010<br>
 👨‍🏫 Randi Proska Sandra, S.Pd., M.Sc<br>
 
 ---
@@ -17,15 +17,26 @@
 
 ---
 
-## 📖 Deskripsi Umum
+<details open>
+<summary><h2>1. Deskripsi Umum</h2></summary>
 
 Repositori ini merupakan dokumentasi resmi kegiatan **Praktikum Pemrograman Jaringan**, yang berfokus pada pengembangan aplikasi berbasis jaringan menggunakan **Node.js** dan teknologi pendukungnya.
 
 Seluruh kegiatan praktikum disusun secara berkelanjutan dari minggu ke minggu, dengan tujuan akhir menghasilkan sebuah **aplikasi web berbasis jaringan** yang mengimplementasikan seluruh konsep yang telah dipelajari.
 
+### 1.1 Dokumentasi Pendukung
+
+-   **[Panduan Lengkap Laporan](docs/GUIDE.md)** - Tutorial detail cara mengisi setiap section laporan (WAJIB BACA!)
+-   **[Quick Reference](docs/QUICK-REFERENCE.md)** - Cheat sheet cepat untuk pengerjaan laporan
+-   **[Template Laporan](docs/!template.md)** - Template kosong untuk copy-paste
+-   **[Assets Guide](assets/README.md)** - Panduan penggunaan folder assets
+
+</details>
+
 ---
 
-## 🎯 Capaian Pembelajaran Mata Kuliah (CPMK)
+<details>
+<summary><h2>2. Capaian Pembelajaran Mata Kuliah (CPMK)</h2></summary>
 
 | No  | Capaian Pembelajaran                                                                                                              |
 | --- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -39,9 +50,12 @@ Seluruh kegiatan praktikum disusun secara berkelanjutan dari minggu ke minggu, d
 | 8   | Menjelaskan serta merancang mekanisme protokol **SMTP** dan **POP3** dalam pengiriman email.                                      |
 | 9   | Mengembangkan aplikasi jaringan dengan komunikasi **real-time** menggunakan **Socket Programming**.                               |
 
+</details>
+
 ---
 
-## 🗓️ Rencana dan Dokumentasi Praktikum
+<details open>
+<summary><h2>3. Rencana dan Dokumentasi Praktikum</h2></summary>
 
 Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1–4** merupakan kegiatan eksplorasi mandiri dari sumber luar (tanpa laporan).
 
@@ -61,43 +75,55 @@ Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1
 |   15   | Capstone Project                                                            | Integrasi seluruh materi menjadi satu aplikasi utuh  |   🔜   |
 |   16   | Ujian Akhir Semester                                                        | Presentasi dan evaluasi hasil akhir proyek           |   🔒   |
 
+</details>
+
 ---
 
-## 🧩 Struktur Repositori
+<details>
+<summary><h2>4. Struktur Repositori</h2></summary>
 
 ```
-├── /week-05/
-│   ├── report.md
-│   └── /project/
-│       ├── server.js
+23343035_Praktikum-Pemrograman-Jaringan/
+├── docs/
+│   ├── !template.md          # Template laporan mingguan (gunakan ini sebagai basis)
+│   └── GUIDE.md              # Panduan lengkap mengerjakan laporan (BACA INI!)
+├── week-05/
+│   ├── laporan-minggu-05.md  # Laporan minggu 5
+│   └── buku-catatan/         # Implementasi kode minggu 5
+│       ├── app.js
+│       ├── catatan.js
 │       ├── package.json
 │       └── ...
-├── /week-06/
-│   ├── report.md
-│   └── /project/
+├── week-06/
+│   ├── laporan-minggu-06.md  # Laporan minggu 6
+│   └── aplikasiCuaca/        # Implementasi kode minggu 6
 │       ├── app.js
+│       ├── cekCuaca.js
+│       ├── package.json
 │       └── ...
-├── /week-07/
-│   ├── report.md
-│   └── /project/
+├── week-XX/
+│   ├── laporan-minggu-XX.md  # Laporan mingguan
+│   └── [nama-project]/       # Folder implementasi kode
 │       └── ...
-├── /week-08/
-│   ├── report.md
-│   └── /project/
-│       └── ...
-├── /assets/
+├── assets/                   # (Optional) Screenshot, diagram, images
 │   └── images/
-├── README.md
+├── README.md                 # File ini - overview repository
+├── LICENSE
 └── .gitignore
-
-
 ```
 
-Setiap laporan mingguan disimpan pada direktori `/docs`, sedangkan implementasi kode program ditempatkan di dalam direktori `/src`.
+**Konvensi Penamaan:**
+
+-   Laporan: `laporan-minggu-XX.md` di root folder `week-XX/`
+-   Project folder: Nama deskriptif sesuai topik (misal: `aplikasiCuaca`, `buku-catatan`)
+-   Setiap week memiliki struktur mandiri (laporan + kode dalam satu folder)
+
+</details>
 
 ---
 
-## 🚀 Capstone Project
+<details>
+<summary><h2>5. Capstone Project</h2></summary>
 
 Pada tahap akhir praktikum, mahasiswa akan mengembangkan **aplikasi web berbasis jaringan** yang mengintegrasikan seluruh materi yang telah dipelajari, meliputi:
 
@@ -107,13 +133,25 @@ Pada tahap akhir praktikum, mahasiswa akan mengembangkan **aplikasi web berbasis
 -   Implementasi **email protocol** dengan Nodemailer
 -   Deployment aplikasi ke server publik
 
+</details>
+
 ---
 
-## 🧾 Catatan
+<details>
+<summary><h2>6. Catatan & Disclaimer</h2></summary>
 
-Repositori ini disusun sebagai bagian dari penilaian mata kuliah **Praktikum Pemrograman Jaringan**.
+Repositori ini disusun sebagai bagian dari penilaian mata kuliah **Praktikum Pemrograman Jaringan** (INF1.62.5010) di bawah bimbingan **Randi Proska Sandra, S.Pd., M.Sc**.
+
 Seluruh laporan, kode, dan dokumentasi dibuat dengan tujuan pembelajaran dan pengembangan kompetensi dalam bidang pemrograman jaringan.
 
+</details>
+
 ---
 
-> _“Pemrograman jaringan bukan hanya tentang koneksi antar komputer, tetapi juga tentang memahami bagaimana sistem berkomunikasi secara efisien dan andal.”_
+<div align="center">
+
+![Footer](https://capsule-render.vercel.app/api?type=waving&height=100&color=gradient&section=footer)
+
+</div>
+
+---
