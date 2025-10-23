@@ -14,212 +14,155 @@
 
 ## 1. Fokus & Tujuan
 
-**Fokus minggu ini:** HTTP Request dan API Integration
+**Fokus minggu ini:** HTTP Request dan Integrasi API
+
+Minggu ini fokus pembelajaran diarahkan pada pemahaman mendalam tentang HTTP request dan integrasi API eksternal dalam konteks pemrograman jaringan. Topik ini menjadi fundamental karena hampir semua aplikasi modern berkomunikasi dengan layanan eksternal melalui protokol HTTP.
 
 **Tujuan pembelajaran:**
 
--   Memahami cara kerja HTTP request/response cycle dalam komunikasi jaringan
--   Mengimplementasikan API chaining dengan nested callbacks (geocoding → weather data)
--   Menguasai error handling untuk network requests
--   Memahami perbedaan antara request statis dan dinamis pada API consumption
+Terdapat empat tujuan utama yang ingin dicapai dalam pembelajaran minggu ini. Pertama, memahami cara kerja siklus HTTP request/response dalam komunikasi jaringan—mulai dari bagaimana client membuat permintaan hingga server mengirim respons. Kedua, mengimplementasikan rantai API dengan nested callbacks untuk menghubungkan dua API berbeda (geocoding dan data cuaca) di mana keluaran dari API pertama menjadi masukan untuk API kedua. Ketiga, menguasai penanganan error untuk permintaan jaringan karena operasi jaringan memiliki banyak titik kegagalan potensial yang harus ditangani dengan baik. Keempat, memahami perbedaan antara permintaan statis dan dinamis pada konsumsi API, serta implikasinya terhadap fleksibilitas dan kemudahan pemeliharaan aplikasi.
 
 ---
 
 ## 2. Konsep Pemrograman Jaringan
 
-### Konsep 1: HTTP Request/Response Cycle
+### Konsep 1: Siklus HTTP Request/Response
 
 **Definisi:**
 
-HTTP (Hypertext Transfer Protocol) adalah protokol application layer yang mendefinisikan bagaimana client dan server berkomunikasi melalui jaringan. Komunikasi terjadi dalam bentuk request dari client dan response dari server. Setiap transaksi HTTP bersifat stateless—artinya setiap request diperlakukan secara independen tanpa menyimpan informasi tentang request sebelumnya.
+HTTP (Hypertext Transfer Protocol) adalah protokol lapisan aplikasi yang mendefinisikan bagaimana client dan server berkomunikasi melalui jaringan. Komunikasi terjadi dalam bentuk permintaan dari client dan respons dari server. Setiap transaksi HTTP bersifat stateless—artinya setiap permintaan diperlakukan secara independen tanpa menyimpan informasi tentang permintaan sebelumnya.
 
 **Mengapa Penting:**
 
-HTTP adalah fondasi dari semua komunikasi web modern. Dalam pemrograman jaringan, HTTP memungkinkan aplikasi untuk:
+HTTP adalah fondasi dari semua komunikasi web modern. Dalam pemrograman jaringan, pemahaman tentang HTTP menjadi sangat penting karena protokol ini memungkinkan aplikasi untuk berkomunikasi dengan server API eksternal dalam mengambil atau mengirim data. Lebih dari itu, HTTP memungkinkan kita membangun aplikasi client-server yang dapat berkembang dan modular dengan memisahkan tanggung jawab antara frontend dan backend melalui arsitektur RESTful.
 
--   Berkomunikasi dengan server API eksternal untuk mengambil atau mengirim data
--   Membangun aplikasi client-server yang scalable dan modular
--   Mengintegrasikan layanan pihak ketiga (payment gateway, social media API, maps, dll)
--   Memisahkan frontend dan backend dengan architecture RESTful
-
-Tanpa memahami HTTP, kita tidak dapat membangun aplikasi modern yang bergantung pada komunikasi jaringan.
+Dalam konteks pengembangan aplikasi modern, HTTP memfasilitasi integrasi dengan layanan pihak ketiga seperti payment gateway, API media sosial, dan layanan pemetaan. Tanpa memahami HTTP secara mendalam, pengembang tidak dapat membangun aplikasi yang bergantung pada komunikasi jaringan—yang berarti hampir semua aplikasi modern karena isolasi total dari jaringan sudah sangat jarang terjadi.
 
 **Cara Kerja:**
 
-1. **Request Creation:** Client membuat HTTP request yang terdiri dari:
-    - Method (GET, POST, PUT, DELETE, dll) - menunjukkan jenis operasi
-    - URL/URI - alamat resource yang diminta
-    - Headers - metadata seperti content-type, authorization, user-agent
-    - Body (optional) - data yang dikirim, biasanya dalam format JSON atau form-data
-2. **Network Transmission:** Request dikirim melalui jaringan menggunakan protocol stack (TCP/IP)
-3. **Server Processing:** Server menerima request, memproses sesuai business logic, dan menyiapkan response
-4. **Response Generation:** Server mengirim HTTP response yang terdiri dari:
-    - Status code (200 OK, 404 Not Found, 500 Internal Server Error, dll)
-    - Headers - metadata response
-    - Body - data yang diminta atau pesan error
-5. **Client Processing:** Client menerima response, memvalidasi status code, dan memproses data
+Proses siklus HTTP request/response melibatkan lima tahap utama yang terjadi secara berurutan. Tahap pertama adalah **pembuatan permintaan**, di mana client membuat HTTP request yang terdiri dari beberapa komponen penting: method (seperti GET, POST, PUT, atau DELETE) yang menunjukkan jenis operasi yang akan dilakukan, URL atau URI sebagai alamat resource yang diminta, headers yang berisi metadata seperti content-type, authorization, dan user-agent, serta body yang bersifat opsional untuk mengirim data dalam format JSON atau form-data.
 
-**Use Case:**
+Tahap kedua adalah **transmisi jaringan**, di mana permintaan yang telah dibuat dikirim melalui jaringan menggunakan tumpukan protokol TCP/IP. Pada tahap ini terjadi proses kompleks di lapisan-lapisan jaringan yang lebih rendah untuk memastikan data sampai ke tujuan dengan andal.
 
--   **Mobile Application:** Aplikasi e-commerce melakukan GET request ke API untuk mendapatkan daftar produk, kemudian POST request untuk mengirim order
--   **Weather App:** Request ke API cuaca (seperti Weatherstack) untuk mendapatkan data real-time berdasarkan lokasi user
--   **Social Media Integration:** Aplikasi melakukan OAuth flow dengan HTTP requests untuk login menggunakan Facebook/Google
--   **Payment Processing:** POST request ke payment gateway untuk memproses transaksi kartu kredit
+Tahap ketiga adalah **pemrosesan server**, di mana server menerima permintaan tersebut, melakukan parsing, memproses sesuai dengan logika bisnis yang telah didefinisikan, dan menyiapkan respons yang sesuai. Pada tahap ini terjadi interaksi dengan database, file system, atau layanan lain sesuai kebutuhan.
 
-### Konsep 2: API Integration dan Third-Party Services
+Tahap keempat adalah **pembentukan respons**, di mana server mengirim HTTP response yang terdiri dari kode status (seperti 200 OK untuk sukses, 404 Not Found untuk resource tidak ditemukan, atau 500 Internal Server Error untuk kesalahan server), headers yang berisi metadata respons, dan body yang berisi data yang diminta atau pesan error jika terjadi masalah.
+
+Tahap kelima dan terakhir adalah **pemrosesan client**, di mana client menerima respons, memvalidasi kode status untuk menentukan apakah permintaan berhasil atau gagal, dan memproses data yang diterima sesuai dengan kebutuhan aplikasi. Pada tahap ini juga dilakukan penanganan error jika respons menunjukkan adanya kesalahan.
+
+**Contoh Penerapan:**
+
+Penerapan siklus HTTP request/response sangat luas dalam aplikasi modern. Dalam konteks **aplikasi mobile**, aplikasi e-commerce menggunakan GET request untuk mendapatkan daftar produk dari server, kemudian menggunakan POST request untuk mengirim data pesanan ketika pengguna melakukan pembelian. Untuk **aplikasi cuaca**, aplikasi melakukan permintaan ke API cuaca seperti Weatherstack untuk mendapatkan data cuaca waktu-nyata berdasarkan lokasi pengguna yang sedang aktif. Dalam **integrasi media sosial**, aplikasi mengimplementasikan alur OAuth dengan serangkaian HTTP request untuk memungkinkan pengguna masuk menggunakan akun Facebook atau Google mereka. Sedangkan dalam **pemrosesan pembayaran**, aplikasi melakukan POST request ke payment gateway untuk memproses transaksi kartu kredit secara aman dan waktu-nyata.
+
+### Konsep 2: Integrasi API dan Layanan Pihak Ketiga
 
 **Definisi:**
 
-API (Application Programming Interface) integration adalah proses menghubungkan aplikasi kita dengan layanan eksternal melalui API yang disediakan. Third-party API seperti Mapbox (geocoding) dan Weatherstack (weather data) menyediakan endpoints yang dapat kita akses dengan HTTP requests untuk mendapatkan data atau fungsionalitas tertentu.
+Integrasi API (Application Programming Interface) adalah proses menghubungkan aplikasi kita dengan layanan eksternal melalui API yang disediakan. API pihak ketiga seperti Mapbox untuk geocoding dan Weatherstack untuk data cuaca menyediakan endpoint yang dapat kita akses dengan HTTP request untuk mendapatkan data atau fungsionalitas tertentu.
 
 **Mengapa Penting:**
 
-Dalam ekosistem software modern, tidak semua fungsionalitas perlu dibangun dari nol. API integration memungkinkan:
+Dalam ekosistem perangkat lunak modern, tidak semua fungsionalitas perlu dibangun dari nol. Integrasi API memungkinkan pengembang untuk **memanfaatkan layanan yang sudah ada** dengan menggunakan layanan spesialis seperti pemetaan, pembayaran, atau email tanpa perlu membangun infrastruktur tersebut dari nol. Hal ini memungkinkan tim pengembangan untuk **fokus pada logika bisnis inti** yaitu fitur-fitur unik yang membedakan aplikasi mereka dari kompetitor, bukan pada fungsi-fungsi umum yang sudah tersedia sebagai layanan.
 
--   **Leverage Existing Services:** Menggunakan layanan spesialis (maps, payment, email, dll) tanpa membangun infrastruktur sendiri
--   **Focus on Core Business Logic:** Developer bisa fokus pada fitur unik aplikasi, bukan pada fungsi umum yang sudah tersedia
--   **Scalability:** Third-party services biasanya sudah di-optimize untuk handle load besar dan memiliki global infrastructure
--   **Time & Cost Efficiency:** Mengurangi development time dan operational cost
+Dari sisi **skalabilitas**, layanan pihak ketiga biasanya sudah dioptimasi untuk menangani beban yang besar dan memiliki infrastruktur global yang sulit dibangun sendiri oleh startup atau tim kecil. Ini juga berimplikasi pada **efisiensi waktu dan biaya** karena mengurangi waktu pengembangan secara signifikan dan menurunkan biaya operasional karena tidak perlu memelihara infrastruktur sendiri untuk fungsi-fungsi yang bisa diserahkan ke layanan khusus.
 
 **Cara Kerja:**
 
-1. **API Documentation Review:** Membaca dokumentasi API untuk memahami endpoints, required parameters, authentication method, dan response format
-2. **Authentication Setup:** Mendaftar API key/token untuk autentikasi—biasanya disimpan sebagai environment variable
-3. **Request Construction:** Membuat HTTP request dengan:
-    - Base URL dari API provider
-    - Endpoint yang sesuai dengan fungsi yang diinginkan
-    - Query parameters atau body data
-    - API key di header atau query string
-4. **Response Handling:** Menerima JSON response, melakukan parsing, dan error handling
-5. **Data Processing:** Menggunakan data dari API untuk logic aplikasi
+Proses integrasi API mengikuti alur kerja yang terstruktur dalam lima tahap. Pertama adalah **penelaahan dokumentasi API**, di mana pengembang membaca dokumentasi API dengan teliti untuk memahami endpoint yang tersedia, parameter yang diperlukan, metode autentikasi yang digunakan (API key, OAuth, JWT, dll), serta format respons yang akan diterima. Dokumentasi yang baik biasanya juga menyertakan contoh permintaan dan respons untuk memudahkan implementasi.
 
-**Use Case:**
+Tahap kedua adalah **pengaturan autentikasi**, di mana pengembang mendaftar untuk mendapatkan API key atau token untuk autentikasi. Kredensial ini biasanya disimpan sebagai environment variable untuk alasan keamanan, bukan di-hardcode di dalam kode sumber. Beberapa API menggunakan autentikasi yang lebih kompleks seperti OAuth 2.0 yang memerlukan alur khusus.
 
--   **Mapbox Geocoding API:** Mengkonversi nama tempat ("Padang Utara") menjadi koordinat geografis (latitude, longitude) untuk aplikasi location-based
--   **Weatherstack API:** Mendapatkan data cuaca real-time berdasarkan koordinat untuk aplikasi weather forecasting
--   **Stripe Payment API:** Memproses pembayaran tanpa perlu PCI compliance sendiri
--   **SendGrid Email API:** Mengirim transactional emails dengan deliverability yang tinggi
+Tahap ketiga adalah **konstruksi permintaan**, di mana pengembang membuat HTTP request dengan komponennya: URL dasar dari penyedia API (misalnya `api.mapbox.com`), endpoint yang sesuai dengan fungsi yang diinginkan (misalnya `/geocode/v6/forward`), parameter query atau data body yang berisi informasi yang diperlukan, dan API key yang disertakan di header atau query string sesuai dengan persyaratan dari penyedia.
 
-### Konsep 3: Asynchronous Request dan Callbacks
+Tahap keempat adalah **penanganan respons**, di mana aplikasi menerima respons JSON dari API, melakukan parsing untuk mengekstrak data yang diperlukan, dan melakukan penanganan error untuk menangani berbagai kemungkinan skenario kegagalan seperti kesalahan jaringan, kredensial tidak valid, atau pembatasan laju permintaan.
+
+Tahap kelima dan terakhir adalah **pemrosesan data**, di mana data yang telah diekstrak dari respons API digunakan untuk logika aplikasi—bisa disimpan ke database, ditampilkan ke pengguna, atau digunakan sebagai masukan untuk pemanggilan API berikutnya dalam rantai.
+
+**Contoh Penerapan:**
+
+Implementasi integrasi API sangat beragam dalam aplikasi modern. **Mapbox Geocoding API** digunakan untuk mengkonversi nama tempat dalam format yang mudah dibaca manusia seperti "Padang Utara" menjadi koordinat geografis (latitude dan longitude) yang diperlukan untuk layanan berbasis lokasi. **Weatherstack API** menyediakan data cuaca waktu-nyata berdasarkan koordinat geografis untuk aplikasi prakiraan cuaca, memberikan informasi seperti suhu, curah hujan, kecepatan angin, dan kondisi cuaca. **Stripe Payment API** memungkinkan aplikasi memproses pembayaran tanpa perlu mematuhi PCI DSS secara langsung, karena informasi pembayaran sensitif ditangani oleh Stripe. Sedangkan **SendGrid Email API** digunakan untuk mengirim email transaksional dengan tingkat keberhasilan pengiriman yang tinggi dan analitik yang komprehensif.
+
+### Konsep 3: Permintaan Asynchronous dan Callback
 
 **Definisi:**
 
-Asynchronous request adalah operasi yang tidak memblokir eksekusi program. Ketika kita melakukan HTTP request (yang bisa memakan waktu ratusan milliseconds), program tidak "freeze" menunggu response—melainkan melanjutkan eksekusi kode berikutnya. Callback adalah function yang diberikan sebagai parameter dan akan dieksekusi setelah operasi async selesai.
+Permintaan asynchronous adalah operasi yang tidak memblokir eksekusi program. Ketika kita melakukan HTTP request yang bisa memakan waktu ratusan milidetik, program tidak berhenti atau "membeku" menunggu respons—melainkan melanjutkan eksekusi kode berikutnya. Callback adalah fungsi yang diberikan sebagai parameter dan akan dieksekusi setelah operasi asynchronous selesai.
 
 **Mengapa Penting:**
 
-Network operations adalah salah satu operasi paling lambat dalam programming (dibandingkan CPU operations atau memory access). Jika kita menggunakan synchronous/blocking approach:
+Operasi jaringan adalah salah satu operasi paling lambat dalam pemrograman jika dibandingkan dengan operasi CPU atau akses memori. Jika kita menggunakan pendekatan synchronous atau blocking, akan timbul beberapa masalah serius. Untuk **permintaan tunggal**, aplikasi akan membeku selama permintaan berlangsung yang menghasilkan pengalaman pengguna yang sangat buruk. Dalam konteks **aplikasi server**, masalahnya menjadi lebih fatal karena server tidak bisa menangani permintaan lain selama masih memproses satu permintaan—ini sepenuhnya memblokir skalabilitas. Untuk skenario **permintaan berganda**, pendekatan synchronous mengharuskan aplikasi menunggu permintaan pertama selesai sebelum memulai yang kedua, yang sangat tidak efisien.
 
--   **Single Request:** Aplikasi freeze selama request berlangsung (bad user experience)
--   **Server Application:** Server tidak bisa handle request lain—fatal untuk scalability
--   **Multiple Requests:** Harus menunggu request pertama selesai sebelum memulai yang kedua (inefficient)
-
-Dengan asynchronous approach, aplikasi bisa:
-
--   Tetap responsive selama network operation
--   Handle multiple requests secara concurrent
--   Perform parallel operations untuk improve performance
+Dengan pendekatan asynchronous, aplikasi mendapatkan beberapa keuntungan signifikan. Aplikasi tetap responsif selama operasi jaringan berlangsung, mampu menangani banyak permintaan secara bersamaan tanpa saling memblokir, dan dapat melakukan operasi paralel untuk meningkatkan kinerja secara dramatis terutama ketika ada beberapa operasi independen yang bisa dilakukan bersamaan.
 
 **Cara Kerja:**
 
-1. **Async Operation Initiation:** Ketika kita call `request(options, callback)`, Node.js:
-    - Mendaftarkan operation ke event loop
-    - Menyimpan callback function untuk dieksekusi nanti
-    - Segera return (tidak menunggu) dan lanjut ke line berikutnya
-2. **Event Loop Processing:** Node.js event loop terus berjalan, monitoring async operations
-3. **Callback Execution:** Ketika HTTP response diterima:
-    - Event loop mendeteksi operation selesai
-    - Memasukkan callback ke callback queue
-    - Mengeksekusi callback dengan `(error, response)` sebagai parameters
+Mekanisme permintaan asynchronous dalam Node.js mengikuti tiga tahap utama. Tahap pertama adalah **inisiasi operasi asynchronous**, ketika kita memanggil fungsi seperti `request(options, callback)`, Node.js tidak langsung menunggu hasilnya. Melainkan, Node.js mendaftarkan operasi tersebut ke event loop, menyimpan fungsi callback untuk dieksekusi nanti ketika operasi selesai, kemudian segera kembali dan melanjutkan eksekusi ke baris berikutnya tanpa pemblokiran.
 
-**Pattern dalam Kode:**
+Tahap kedua adalah **pemrosesan event loop**, di mana event loop Node.js terus berjalan di latar belakang, terus-menerus memantau operasi asynchronous yang sedang berjalan. Event loop ini berjalan di satu thread tapi mampu menangani banyak operasi secara bersamaan melalui mekanisme non-blocking I/O.
+
+Tahap ketiga adalah **eksekusi callback**, yang terjadi ketika respons HTTP akhirnya diterima dari server. Pada saat ini, event loop mendeteksi bahwa operasi telah selesai, memasukkan fungsi callback ke dalam antrian callback untuk dieksekusi, dan mengeksekusi callback tersebut dengan parameter `(error, response)` sesuai dengan konvensi callback error-first Node.js.
+
+**Pola dalam Kode:**
 
 ```javascript
-// Pattern: (error, response) => { ... }
+// Pola: (error, response) => { ... }
 request({ url: geocodeUrl, json: true }, (error, response) => {
 	if (error) {
-		return console.error("Error:", error); // Handle network error
+		return console.error("Error:", error); // Tangani kesalahan jaringan
 	}
-	// Process response
+	// Proses respons
 	const coordinates = response.body.features[0].properties.coordinates;
 });
 ```
 
-**Use Case:**
+**Contoh Penerapan:**
 
--   **Web Server:** Express.js server dapat handle ribuan concurrent HTTP requests karena non-blocking I/O
--   **Parallel API Calls:** Melakukan request ke multiple APIs secara bersamaan tanpa menunggu satu per satu
--   **Database Operations:** Query database sambil melayani HTTP requests lain
--   **File Upload:** Upload file ke cloud storage tanpa memblokir user dari melakukan actions lain
+Penerapan permintaan asynchronous sangat luas dalam aplikasi modern. **Server web** seperti Express.js dapat menangani ribuan permintaan HTTP bersamaan karena non-blocking I/O. **Pemanggilan API paralel** memungkinkan melakukan permintaan ke beberapa API secara bersamaan tanpa menunggu satu per satu. **Operasi database** memungkinkan query database sambil melayani permintaan HTTP lain. Sedangkan **pengunggahan file** memungkinkan mengunggah file ke penyimpanan cloud tanpa memblokir pengguna dari melakukan tindakan lain.
 
-### Konsep 4: API Chaining dan Data Dependency
+### Konsep 4: Rantai API dan Ketergantungan Data
 
 **Definisi:**
 
-API chaining adalah pattern di mana output dari satu API call digunakan sebagai input untuk API call berikutnya. Ini menciptakan sequential async operations di mana request kedua depends on hasil request pertama. Dalam konteks aplikasi cuaca kita: nama kota → koordinat (Mapbox) → data cuaca (Weatherstack).
+Rantai API adalah pola di mana keluaran dari satu pemanggilan API digunakan sebagai masukan untuk pemanggilan API berikutnya. Ini menciptakan operasi asynchronous berurutan di mana permintaan kedua bergantung pada hasil permintaan pertama. Dalam konteks aplikasi cuaca kita: nama kota → koordinat (Mapbox) → data cuaca (Weatherstack).
 
 **Mengapa Penting:**
 
-Banyak use case real-world memerlukan multiple API calls yang saling bergantung:
+Banyak kasus penggunaan dunia nyata memerlukan beberapa pemanggilan API yang saling bergantung. Tidak semua data tersedia dalam satu API, sering kali perlu transformasi data dari satu format ke format lain, dan logika bisnis mengharuskan operasi berurutan.
 
--   Tidak semua data tersedia dalam satu API
--   Perlu transformasi data dari satu format ke format lain
--   Business logic mengharuskan sequential operations
-
-Memahami API chaining penting karena:
-
--   **Common Pattern:** Sangat sering ditemui dalam aplikasi production
--   **Error Handling Complexity:** Setiap step bisa fail, perlu robust error handling
--   **Code Organization:** Nested callbacks bisa menjadi "callback hell" jika tidak dikelola dengan baik
+Memahami rantai API penting karena beberapa alasan. Pertama, ini adalah **pola yang umum** sangat sering ditemui dalam aplikasi produksi. Kedua, ada **kompleksitas penanganan error** karena setiap langkah bisa gagal dan memerlukan penanganan error yang kuat. Ketiga, ada tantangan **organisasi kode** karena callback bersarang bisa menjadi "callback hell" jika tidak dikelola dengan baik.
 
 **Cara Kerja:**
 
-Dalam aplikasi cuaca, alurnya adalah:
+Dalam aplikasi cuaca, alur kerja rantai API melibatkan dua langkah utama. **Langkah pertama adalah geocoding**, di mana masukan berupa nama kota seperti "padang utara" diproses melalui HTTP GET ke Mapbox API, dan menghasilkan keluaran berupa koordinat {latitude: -0.923939, longitude: 100.36727}. **Langkah kedua adalah pengambilan data cuaca**, di mana masukan berupa koordinat dari langkah pertama diproses melalui HTTP GET ke Weatherstack API dengan koordinat tersebut, dan menghasilkan keluaran berupa data cuaca lengkap (temperature, description, precip, dll).
 
-1. **Step 1 - Geocoding:**
-    - Input: Nama kota ("padang utara")
-    - Process: HTTP GET ke Mapbox API
-    - Output: Koordinat {latitude: -0.923939, longitude: 100.36727}
-2. **Step 2 - Weather Fetching:**
-    - Input: Koordinat dari Step 1
-    - Process: HTTP GET ke Weatherstack API dengan koordinat tersebut
-    - Output: Data cuaca (temperature, description, precip, dll)
+Kedua langkah ini **harus berurutan**—kita tidak bisa meminta data cuaca sebelum mendapat koordinat dari proses geocoding.
 
-Kedua step ini **harus sequential**—kita tidak bisa request weather data sebelum mendapat koordinat.
-
-**Implementation Pattern:**
+**Pola Implementasi:**
 
 ```javascript
-// Nested Callbacks untuk API Chaining
+// Callback Bersarang untuk Rantai API
 request({ url: geocodeUrl, json: true }, (error, response) => {
-	// Step 1: Geocoding
+	// Langkah 1: Geocoding
 	const coords = response.body.features[0].properties.coordinates;
 	const lat = coords.latitude;
 	const lon = coords.longitude;
 
-	// Step 2: Weather (nested di dalam callback Step 1)
+	// Langkah 2: Cuaca (bersarang di dalam callback Langkah 1)
 	const weatherUrl = `http://api.weatherstack.com/current?query=${lat},${lon}`;
 	request({ url: weatherUrl, json: true }, (err2, resp2) => {
-		// Process weather data
+		// Proses data cuaca
 		console.log("Suhu:", resp2.body.current.temperature);
 	});
 });
 ```
 
-**Challenges:**
+**Tantangan:**
 
--   **Callback Hell:** Banyak nested callbacks membuat kode sulit dibaca (solution: Promise, async/await)
--   **Error Propagation:** Error di step pertama harus di-handle agar tidak lanjut ke step kedua
--   **Performance:** Sequential approach bisa lambat jika ada operasi yang sebenarnya bisa parallel
+Implementasi rantai API memiliki beberapa tantangan. **Callback Hell** terjadi ketika banyak callback bersarang membuat kode sulit dibaca—solusinya adalah menggunakan Promise atau async/await. **Propagasi Error** mengharuskan error di langkah pertama ditangani dengan baik agar tidak melanjutkan ke langkah kedua. **Kinerja** bisa menjadi masalah karena pendekatan berurutan bisa lambat jika ada operasi yang sebenarnya bisa dilakukan secara paralel.
 
-**Use Case:**
+**Contoh Penerapan:**
 
--   **E-commerce Checkout:**
-    1. Validate inventory → 2. Create order → 3. Process payment → 4. Send confirmation email
--   **OAuth Authentication:**
-    1. Get authorization code → 2. Exchange for access token → 3. Fetch user profile
--   **Data Pipeline:**
-    1. Fetch raw data dari API → 2. Transform/aggregate → 3. Store ke database → 4. Trigger analytics
+Rantai API banyak digunakan dalam berbagai skenario. Dalam **checkout e-commerce**, alurnya adalah: validasi inventori → buat pesanan → proses pembayaran → kirim email konfirmasi. Untuk **autentikasi OAuth**, alurnya: dapatkan kode otorisasi → tukar dengan access token → ambil profil pengguna. Sedangkan dalam **pipeline data**, alurnya: ambil data mentah dari API → transformasi/agregasi → simpan ke database → picu analitik.
 
 ---
 
@@ -228,40 +171,40 @@ request({ url: geocodeUrl, json: true }, (error, response) => {
 ### Arsitektur Aplikasi Cuaca
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
-│                    Aplikasi Node.js (cekCuaca.js)                │
-│                                                                  │
-│  ┌────────────────┐                         ┌─────────────────┐ │
-│  │  User Input    │                         │  Console Output │ │
-│  │  (city name)   │                         │  (weather data) │ │
-│  └───────┬────────┘                         └────────▲────────┘ │
-│          │                                           │          │
-│          │                                           │          │
-│          ▼                                           │          │
-│  ┌──────────────────┐           ┌───────────────────┴────┐     │
-│  │  geocodeCity()   │  coords   │   getWeather()         │     │
-│  │  Function        │──────────▶│   Function             │     │
-│  │  (Step 1)        │ {lat,lon} │   (Step 2)             │     │
-│  └────────┬─────────┘           └────────┬───────────────┘     │
-│           │                              │                     │
-└───────────┼──────────────────────────────┼─────────────────────┘
-            │                              │
-            │ HTTP GET                     │ HTTP GET
-            │ + city name                  │ + coordinates
-            │                              │
-            ▼                              ▼
-┌───────────────────────┐      ┌──────────────────────────┐
-│   Mapbox API          │      │   Weatherstack API       │
-│   (Geocoding Service) │      │   (Weather Data Service) │
-│                       │      │                          │
-│   Endpoint:           │      │   Endpoint:              │
-│   /geocode/v6/forward │      │   /current               │
-└───────────────────────┘      └──────────────────────────┘
-          ▲                              ▲
-          │                              │
-          └──────────┬───────────────────┘
-                     │
-               Internet / Network
+┌──────────────────────────────────────────────────────────────┐
+│                    Aplikasi Node.js (cekCuaca.js)            │
+│                                                              │
+│  ┌────────────────┐                    ┌─────────────────┐   │
+│  │  User Input    │                    │  Console Output │   │
+│  │  (city name)   │                    │  (weather data) │   │
+│  └───────┬────────┘                    └─────────────────┘   │
+│          │                                        ▲          │
+│          │                                        │          │
+│          ▼                                        │          │
+│  ┌──────────────────┐           ┌─────────────────┴──────┐   │
+│  │  geocodeCity()   │  coords   │   getWeather()         │   │
+│  │  Function        │─────────▶│   Function             │   │
+│  │  (Step 1)        │ {lat,lon} │   (Step 2)             │   │
+│  └────────┬─────────┘           └───────────────┬────────┘   │
+│           │                                     │            │
+└───────────┼─────────────────────────────────────┼────────────┘
+            │                                     │
+            │ HTTP GET                            │ HTTP GET
+            │ + city name                         │ + coordinates
+            │                                     │
+            ▼                                     ▼
+┌───────────────────────┐           ┌──────────────────────────┐
+│   Mapbox API          │           │   Weatherstack API       │
+│   (Geocoding Service) │           │   (Weather Data Service) │
+│                       │           │                          │
+│   Endpoint:           │           │   Endpoint:              │
+│   /geocode/v6/forward │           │   /current               │
+└───────────────────────┘           └──────────────────────────┘
+            ▲                                     ▲
+            │                                     │
+            └───────────────────┬─────────────────┘
+                                │
+                        Internet / Network
 ```
 
 ### Alur Eksekusi Detail
@@ -350,21 +293,13 @@ Start
   └─▶ End
 ```
 
-### Komponen Networking
+### Komponen Jaringan
 
-1. **Protocol Layer:**
-    - Application Layer: HTTP/1.1
-    - Transport Layer: TCP (reliable transmission)
-    - Network Layer: IP addressing
-2. **Request Components:**
-    - Method: GET (read-only operations)
-    - URL: Complete dengan base URL, path, query parameters
-    - Headers: User-Agent, Accept (biasanya otomatis di-set oleh library)
-    - Authentication: API key di query string
-3. **Response Processing:**
-    - Status Code: 200 OK, 401 Unauthorized, 404 Not Found
-    - Headers: Content-Type application/json
-    - Body: JSON payload dengan data
+Aplikasi cuaca ini menggunakan tiga lapisan protokol jaringan. **Lapisan aplikasi menggunakan HTTP/1.1** untuk komunikasi antara client dan server API. **Lapisan transport menggunakan TCP** yang menjamin transmisi data yang reliable dan terurut. **Lapisan network menggunakan pengalamatan IP** untuk routing paket data melalui internet.
+
+**Komponen permintaan** yang digunakan dalam aplikasi ini meliputi beberapa elemen. Method yang digunakan adalah **GET untuk operasi read-only** yang tidak mengubah data di server. URL yang lengkap terdiri dari **base URL, path, dan query parameters** yang membawa informasi seperti API key dan parameter pencarian. Headers seperti **User-Agent dan Accept biasanya otomatis di-set oleh library** request yang digunakan. **Autentikasi dilakukan melalui API key** yang disisipkan di query string URL.
+
+**Pemrosesan respons** melibatkan beberapa komponen penting. Status code menunjukkan **hasil permintaan: 200 OK untuk sukses, 401 Unauthorized untuk masalah autentikasi, 404 Not Found untuk resource tidak ditemukan**. Headers respons mencakup **Content-Type application/json** yang menandakan format data yang dikembalikan. Body respons berisi **JSON payload dengan data** cuaca atau geocoding yang diminta.
 
 ---
 
@@ -411,15 +346,11 @@ request({ url: weatherstackUrl, json: true }, (error, response) => {
 
 **Konteks Pemrograman Jaringan:**
 
--   **URL Construction:** Menggunakan template literals untuk build URL dengan query parameters
--   **Option `json: true`:** Library `postman-request` otomatis melakukan JSON parsing pada response body (tidak perlu manual `JSON.parse()`)
--   **Callback Pattern:** `(error, response) => { }` adalah standard Node.js callback dengan error-first convention
--   **Response Structure:** Akses nested data dengan `response.body.current.temperature`—perlu memahami struktur JSON dari API documentation
+Kode ini mendemonstrasikan beberapa konsep penting dalam pemrograman jaringan. **Konstruksi URL menggunakan template literals** untuk membangun URL lengkap dengan query parameters yang diperlukan. **Opsi `json: true`** membuat library `postman-request` secara otomatis melakukan JSON parsing pada response body sehingga tidak perlu manual `JSON.parse()`. **Pola callback `(error, response) => { }`** adalah standar Node.js callback dengan konvensi error-first di mana parameter pertama selalu error dan parameter kedua adalah respons. **Struktur respons** mengharuskan kita mengakses data bersarang dengan `response.body.current.temperature`—ini memerlukan pemahaman struktur JSON dari dokumentasi API.
 
-**Limitation:**
+**Keterbatasan:**
 
--   Coordinates hardcoded—tidak flexible untuk berbagai lokasi
--   Tidak ada error handling—jika request fail atau API key invalid, aplikasi crash
+Implementasi ini memiliki keterbatasan. **Koordinat di-hardcode** sehingga tidak fleksibel untuk berbagai lokasi berbeda. **Tidak ada penanganan error** yang membuat aplikasi crash jika request gagal atau API key tidak valid.
 
 #### 2. Mapbox Geocoding (Latihan 2)
 
@@ -446,15 +377,9 @@ request({ url: geocodeUrl, json: true }, (error, response) => {
 
 **Konteks Pemrograman Jaringan:**
 
--   **Query Parameters:** `q=padang+utara` (URL encoding spaces), `proximity=ip` (bias hasil berdasarkan IP location), `limit=1` (hanya ambil top result)
--   **Error Handling Strategy:**
-    -   Check `error` parameter untuk network errors (no internet, DNS fail, timeout)
-    -   Validate response structure sebelum access nested properties—defensive programming
-    -   Early return untuk exit function jika error detected
--   **API Response Structure:** Mapbox mengembalikan array `features[]`—setiap feature adalah possible match untuk query
--   **Data Extraction:** Akses coordinates dari `features[0].properties.coordinates` dengan safe navigation
+Kode ini menunjukkan peningkatan dalam penanganan API. **Query parameters** seperti `q=padang+utara` menggunakan URL encoding untuk spasi, `proximity=ip` memberikan bias hasil berdasarkan lokasi IP pengguna, dan `limit=1` hanya mengambil hasil teratas. **Strategi penanganan error** melibatkan pengecekan parameter `error` untuk network errors seperti tidak ada internet, DNS fail, atau timeout; validasi struktur respons sebelum mengakses properti bersarang sebagai defensive programming; dan early return untuk keluar dari fungsi jika error terdeteksi. **Struktur respons API** dari Mapbox mengembalikan array `features[]` di mana setiap feature adalah kemungkinan kecocokan untuk query. **Ekstraksi data** dilakukan dengan mengakses coordinates dari `features[0].properties.coordinates` dengan safe navigation untuk menghindari error.
 
-**Improvement dari Latihan 1:**
+**Peningkatan dari Latihan 1:**
 
 -   Ada error handling untuk network dan response validation
 -   Flexible query—bisa ganti city name di URL
@@ -495,35 +420,22 @@ request({ url: geocodeUrl, json: true }, (error, response) => {
 
 **Konteks Pemrograman Jaringan:**
 
--   **API Chaining Pattern:** Request kedua (Weatherstack) berada **di dalam callback** request pertama (Mapbox)—ini memastikan kita memiliki coordinates sebelum request weather
--   **Data Flow:** Output dari API pertama (`coordinates`) menjadi input untuk API kedua (`query=${lat},${lon}`)
--   **Nested Callbacks:** Ini adalah "Callback Hell" pattern—code structure menjadi deeply nested, sulit dibaca dan maintain
--   **Sequential Async Operations:** Request tidak bisa parallel—harus menunggu geocoding selesai sebelum fetch weather
+Kode ini mendemonstrasikan pola rantai API yang kompleks. **Pola rantai API** diterapkan dengan menempatkan request kedua (Weatherstack) **di dalam callback** request pertama (Mapbox)—ini memastikan kita memiliki koordinat sebelum meminta data cuaca. **Aliran data** menunjukkan bagaimana output dari API pertama (`coordinates`) menjadi input untuk API kedua (`query=${lat},${lon}`). **Callback bersarang** ini adalah pola "Callback Hell" di mana struktur kode menjadi sangat bersarang, sulit dibaca dan dipelihara. **Operasi asynchronous berurutan** tidak bisa dilakukan paralel—harus menunggu geocoding selesai sebelum mengambil data cuaca.
 
-**Pros:**
+Implementasi ini memiliki **keuntungan**: sederhana dan straightforward untuk operasi berurutan, tidak perlu abstraksi atau library tambahan. Namun juga memiliki **kekurangan**: **Keterbacaan** menjadi masalah karena callback bersarang membuat kode sulit dibaca ("pyramid of doom"); **Penanganan error** perlu dilakukan di setiap level callback bersarang; **Kemudahan pemeliharaan** berkurang karena sulit untuk menambah atau memodifikasi langkah di tengah rantai; **Pengujian** menjadi lebih sulit karena callback bersarang lebih sulit di-unit test.
 
--   Sederhana dan straightforward untuk sequential operations
--   Tidak perlu additional abstraction atau library
-
-**Cons:**
-
--   **Readability:** Nested callbacks membuat code sulit dibaca ("pyramid of doom")
--   **Error Handling:** Perlu error handling di setiap level nested callback
--   **Maintainability:** Sulit untuk add/modify steps di tengah chain
--   **Testing:** Nested callbacks lebih sulit di-unit test
-
-**Alternative Pattern (Promise/Async-Await):**
+**Pola Alternatif (Promise/Async-Await):**
 
 ```javascript
-// Better pattern untuk API chaining (akan dipelajari di minggu depan)
+// Pola yang lebih baik untuk rantai API (akan dipelajari di minggu depan)
 async function getWeatherByCity(cityName) {
-	const geocode = await geocodeCity(cityName); // Step 1
-	const weather = await getWeather(geocode.lat, geocode.lon); // Step 2
+	const geocode = await geocodeCity(cityName); // Langkah 1
+	const weather = await getWeather(geocode.lat, geocode.lon); // Langkah 2
 	return weather;
 }
 ```
 
-#### 4. Environment Variables Management
+#### 4. Pengelolaan Environment Variables
 
 ```javascript
 require("dotenv").config();
@@ -537,10 +449,7 @@ if (!MAPBOX_KEY)
 
 **Konteks Pemrograman Jaringan:**
 
--   **Security Best Practice:** API keys tidak boleh hardcoded di source code—risk of exposure jika commit ke public repository
--   **12-Factor App Methodology:** Configuration (termasuk credentials) harus di environment, bukan kode
--   **Environment-Specific Config:** Bisa punya different API keys untuk development vs production
--   **`.gitignore`:** File `.env` harus di-exclude dari version control
+Pengelolaan environment variables mengikuti beberapa praktik terbaik keamanan dan konfigurasi. **Praktik terbaik keamanan** mengharuskan API keys tidak boleh di-hardcode di source code karena risiko terekspos jika commit ke repository publik. **Metodologi 12-Factor App** menyatakan bahwa konfigurasi (termasuk credentials) harus di environment, bukan di kode. **Konfigurasi spesifik environment** memungkinkan penggunaan API keys yang berbeda untuk development dan production. **File `.gitignore`** harus mengecualikan file `.env` dari version control untuk menjaga keamanan kredensial.
 
 **File `.env` Structure:**
 
@@ -553,140 +462,143 @@ MAPBOX_KEY=xyz456...
 
 ## 5. Kendala, Solusi & Pembelajaran
 
-### Kendala 1: API Key Exposure Risk
+### Kendala 1: Risiko Tereksposnya API Key
 
--   **Masalah:**
-    -   Pada awalnya, API keys di-hardcode langsung di source code (`const MAPBOX_KEY = "abc123xyz..."`)
-    -   Ketika commit ke Git, API keys ter-expose di repository history—bisa disalahgunakan oleh orang lain
-    -   Jika repository di-push ke GitHub public, API keys bisa di-scrape oleh bots dan digunakan untuk unauthorized requests
--   **Penyebab:**
-    -   Tidak memahami security risk dari committing credentials
-    -   Belum mengetahui best practice untuk managing sensitive configuration
-    -   Mengikuti tutorial yang tidak emphasize security considerations
--   **Solusi:**
-    1. Install package `dotenv`: `npm install dotenv`
-    2. Buat file `.env` di root project:
-        ```
-        WEATHERSTACK_KEY=your_key_here
-        MAPBOX_KEY=your_key_here
-        ```
-    3. Load environment variables di awal file:
-        ```javascript
-        require("dotenv").config();
-        const WEATHERSTACK_KEY = process.env.WEATHERSTACK_KEY;
-        ```
-    4. Tambahkan `.env` ke `.gitignore` untuk exclude dari version control
-    5. Buat `.env.example` dengan placeholder untuk documentation:
-        ```
-        WEATHERSTACK_KEY=your_weatherstack_key
-        MAPBOX_KEY=your_mapbox_key
-        ```
--   **Pembelajaran:**
-    -   **Security Principle:** Never commit secrets (API keys, passwords, tokens) ke version control—ini adalah fundamental security mistake
-    -   **12-Factor App Config:** Environment variables adalah standard way untuk manage configuration di aplikasi modern
-    -   **Git History Persistence:** Bahkan jika kita delete API key di commit selanjutnya, key tersebut tetap ada di Git history—perlu force rewrite history atau rotate key
-    -   **Production Practices:** Di production, gunakan secret management services (AWS Secrets Manager, HashiCorp Vault, Azure Key Vault)
-    -   **API Key Monitoring:** Many API providers punya tools untuk detect suspicious usage—penting untuk monitor jika key ter-compromise
+**Masalah:**
 
-### Kendala 2: Nested Callback Complexity ("Callback Hell")
+Pada awalnya, API keys di-hardcode langsung di source code dengan format seperti `const MAPBOX_KEY = "abc123xyz..."`. Ketika commit ke Git, API keys ter-expose di repository history dan bisa disalahgunakan oleh orang lain. Jika repository di-push ke GitHub public, API keys bisa di-scrape oleh bots dan digunakan untuk permintaan yang tidak terotorisasi.
 
--   **Masalah:**
-    -   Ketika implement API chaining, code structure menjadi deeply nested:
-        ```javascript
-        request(geocodeUrl, (error, response) => {
-        	// ... 10 lines of code
-        	request(weatherUrl, (err2, resp2) => {
-        		// ... more nested code
-        	});
-        });
-        ```
-    -   Code menjadi sulit dibaca—pyramid shape dengan banyak closing braces
-    -   Error handling harus duplicate di setiap level
-    -   Sulit untuk add additional async operations di tengah chain
--   **Penyebab:**
-    -   Sequential async operations dengan callback-based API
-    -   Library `postman-request` menggunakan callback pattern (old-style Node.js)
-    -   Belum familiar dengan Promise atau async/await patterns
--   **Solusi:**
-    -   **Short-term (untuk jobsheet ini):**
-        -   Add comments untuk menjelaskan setiap nested level
-        -   Extract nested callback ke named function:
-            ```javascript
-            function handleWeatherResponse(err2, resp2) {
-            	// Process weather data
-            }
-            request(weatherUrl, handleWeatherResponse);
-            ```
-        -   Buat helper functions untuk reduce nesting
-    -   **Long-term (future improvement):**
-        -   Migrate ke Promise-based HTTP library (axios, node-fetch)
-        -   Refactor dengan async/await:
-            ```javascript
-            async function getWeatherByCity(city) {
-            	const coords = await geocodeCity(city);
-            	const weather = await getWeather(coords.lat, coords.lon);
-            	return weather;
-            }
-            ```
-        -   Pattern ini lebih readable dan maintainable
--   **Pembelajaran:**
-    -   **Evolution of Async Patterns:** Node.js async patterns evolved: callbacks → Promises → async/await
-    -   **Callback Hell adalah masalah umum:** Banyak developer mengalami ini—ada nama khusus untuk anti-pattern ini
-    -   **Code Organization Matters:** Nested code is harder to test, debug, and maintain—flat structure lebih baik
-    -   **Modern JavaScript:** Async/await syntax (ES2017) adalah solution terbaik untuk sequential async operations
-    -   **Library Choice:** Memilih library yang support Promise native (axios) vs callback (postman-request) affect code quality
+**Penyebab:**
 
-### Kendala 3: API Response Validation dan Error Handling
+Masalah ini terjadi karena tidak memahami risiko keamanan dari committing credentials, belum mengetahui praktik terbaik untuk mengelola konfigurasi sensitif, dan mengikuti tutorial yang tidak menekankan pertimbangan keamanan.
+**Solusi:**
 
--   **Masalah:**
-    -   Pada latihan pertama, code crash jika:
-        -   API request timeout atau network error
-        -   API key invalid—response body tidak sesuai expected structure
-        -   Mapbox tidak menemukan hasil untuk city name yang dicari
-    -   Error message tidak informative—sulit untuk debugging
-    -   Aplikasi berhenti completely tanpa graceful error handling
--   **Penyebab:**
-    -   Tidak ada validation untuk `response.body` structure sebelum access nested properties
-    -   Assumption bahwa API always return expected structure—no defensive programming
-    -   Tidak familiar dengan possible error scenarios dalam network programming
--   **Solusi:**
-    1. **Check Network Error di Callback:**
-        ```javascript
-        request(options, (error, response) => {
-        	if (error) {
-        		return console.error("Network error:", error.message);
-        	}
-        	// Continue processing...
-        });
-        ```
-    2. **Validate Response Structure:**
-        ```javascript
-        if (!response || !response.body) {
-        	return console.error("Invalid response structure");
-        }
-        if (!response.body.features || response.body.features.length === 0) {
-        	return console.error("No results found for query");
-        }
-        ```
-    3. **Safe Property Access:**
-        ```javascript
-        const coords = feat.properties && feat.properties.coordinates;
-        if (!coords) {
-        	return console.error("Coordinates not available");
-        }
-        ```
-    4. **Informative Error Messages:**
-        - Include context: apa yang failed, input apa yang digunakan
-        - Log response body untuk debugging
--   **Pembelajaran:**
-    -   **Network Unreliability:** Network operations can fail untuk banyak reasons—timeout, DNS failure, server down, rate limiting
-    -   **API Contract:** Tidak bisa assume API always return expected format—bisa ada API changes, edge cases, atau errors
-    -   **Defensive Programming:** Always validate data sebelum use—especially untuk external data sources
-    -   **Error Handling Strategy:**
-        -   **Fail Fast:** Detect dan report errors as early as possible
-        -   **Graceful Degradation:** Aplikasi tetap functional meskipun ada partial failure
-        -   **User-Friendly Messages:** Error messages harus informative dan actionable
-    -   **Debugging Network Issues:** Perlu tools dan techniques untuk inspect HTTP requests/responses (Postman, browser DevTools, logging)
+Solusi untuk masalah ini melibatkan beberapa langkah. **Pertama**, install package `dotenv` dengan perintah `npm install dotenv`. **Kedua**, buat file `.env` di root project dengan format:
+
+```
+WEATHERSTACK_KEY=your_key_here
+MAPBOX_KEY=your_key_here
+```
+
+**Ketiga**, load environment variables di awal file:
+
+```javascript
+require("dotenv").config();
+const WEATHERSTACK_KEY = process.env.WEATHERSTACK_KEY;
+```
+
+**Keempat**, tambahkan `.env` ke `.gitignore` untuk mengecualikan dari version control. **Kelima**, buat `.env.example` dengan placeholder untuk dokumentasi:
+
+```
+WEATHERSTACK_KEY=your_weatherstack_key
+MAPBOX_KEY=your_mapbox_key
+```
+
+**Pembelajaran:**
+
+Dari pengalaman mengatasi kendala ini, beberapa pembelajaran penting didapat. **Prinsip keamanan** menegaskan bahwa tidak boleh commit secrets (API keys, passwords, tokens) ke version control karena ini adalah kesalahan keamanan fundamental. **Konfigurasi 12-Factor App** menyatakan bahwa environment variables adalah cara standar untuk mengelola konfigurasi di aplikasi modern. **Persistensi Git history** menunjukkan bahwa bahkan jika kita menghapus API key di commit selanjutnya, key tersebut tetap ada di Git history—perlu force rewrite history atau rotate key. **Praktik production** mengharuskan penggunaan layanan pengelolaan secret (AWS Secrets Manager, HashiCorp Vault, Azure Key Vault) di production. **Monitoring API key** penting karena banyak penyedia API memiliki tools untuk mendeteksi penggunaan mencurigakan—penting untuk memonitor jika key ter-compromise.
+
+### Kendala 2: Kompleksitas Callback Bersarang ("Callback Hell")
+
+**Masalah:**
+
+Ketika mengimplementasikan rantai API, struktur kode menjadi sangat bersarang:
+
+```javascript
+request(geocodeUrl, (error, response) => {
+	// ... 10 lines of code
+	request(weatherUrl, (err2, resp2) => {
+		// ... more nested code
+	});
+});
+```
+
+Kode menjadi sulit dibaca karena bentuk pyramid dengan banyak closing braces. Penanganan error harus diduplikasi di setiap level. Sulit untuk menambahkan operasi asynchronous tambahan di tengah rantai.
+
+**Penyebab:**
+
+Masalah ini disebabkan oleh operasi asynchronous berurutan dengan callback-based API, library `postman-request` yang menggunakan callback pattern (gaya Node.js lama), dan belum familiar dengan Promise atau async/await patterns.
+
+**Solusi:**
+
+**Jangka pendek (untuk jobsheet ini):** Tambahkan komentar untuk menjelaskan setiap level bersarang.
+Ekstrak callback bersarang ke named function:
+
+```javascript
+function handleWeatherResponse(err2, resp2) {
+	// Process weather data
+}
+request(weatherUrl, handleWeatherResponse);
+```
+
+Buat helper functions untuk mengurangi tingkat bersarang.
+
+**Jangka panjang (peningkatan masa depan):** Migrasi ke Promise-based HTTP library (axios, node-fetch). Refactor dengan async/await:
+
+```javascript
+async function getWeatherByCity(city) {
+	const coords = await geocodeCity(city);
+	const weather = await getWeather(coords.lat, coords.lon);
+	return weather;
+}
+```
+
+Pola ini lebih mudah dibaca dan dipelihara.
+
+**Pembelajaran:**
+
+Dari pengalaman ini didapat beberapa pembelajaran. **Evolusi pola asynchronous** di Node.js mengikuti perkembangan: callbacks → Promises → async/await. **Callback Hell adalah masalah umum** yang dialami banyak pengembang—bahkan ada nama khusus untuk anti-pattern ini. **Organisasi kode penting** karena kode bersarang lebih sulit di-test, debug, dan dipelihara—struktur flat lebih baik. **JavaScript modern** dengan async/await syntax (ES2017) adalah solusi terbaik untuk operasi asynchronous berurutan. **Pemilihan library** mempengaruhi kualitas kode—memilih library yang mendukung Promise native (axios) vs callback (postman-request) berdampak pada kualitas kode.
+
+### Kendala 3: Validasi Respons API dan Penanganan Error
+
+**Masalah:**
+
+Pada latihan pertama, kode crash dalam beberapa situasi: ketika API request timeout atau terjadi network error; ketika API key invalid sehingga response body tidak sesuai struktur yang diharapkan; dan ketika Mapbox tidak menemukan hasil untuk nama kota yang dicari. Error message yang dihasilkan tidak informatif sehingga sulit untuk debugging. Aplikasi berhenti sepenuhnya tanpa graceful error handling.
+
+**Penyebab:**
+
+Masalah ini disebabkan karena tidak ada validasi untuk struktur `response.body` sebelum mengakses properti bersarang, asumsi bahwa API selalu mengembalikan struktur yang diharapkan tanpa defensive programming, dan tidak familiar dengan kemungkinan skenario error dalam pemrograman jaringan.
+
+**Solusi:**
+
+**Pertama**, cek network error di callback:
+
+```javascript
+request(options, (error, response) => {
+	if (error) {
+		return console.error("Network error:", error.message);
+	}
+	// Continue processing...
+});
+```
+
+**Kedua**, validasi struktur respons:
+
+```javascript
+if (!response || !response.body) {
+	return console.error("Invalid response structure");
+}
+if (!response.body.features || response.body.features.length === 0) {
+	return console.error("No results found for query");
+}
+```
+
+**Ketiga**, akses properti yang aman:
+
+```javascript
+const coords = feat.properties && feat.properties.coordinates;
+if (!coords) {
+	return console.error("Coordinates not available");
+}
+```
+
+**Keempat**, pesan error yang informatif: sertakan konteks seperti apa yang gagal dan input apa yang digunakan; log response body untuk debugging.
+
+**Pembelajaran:**
+
+Beberapa pembelajaran penting didapat dari penanganan kendala ini. **Ketidakandalan jaringan** menunjukkan bahwa operasi jaringan bisa gagal karena banyak alasan—timeout, DNS failure, server down, rate limiting. **Kontrak API** mengajarkan bahwa tidak bisa mengasumsikan API selalu mengembalikan format yang diharapkan—bisa ada perubahan API, edge cases, atau errors. **Defensive programming** mengharuskan selalu validasi data sebelum digunakan—terutama untuk sumber data eksternal.
+
+**Strategi penanganan error** meliputi beberapa prinsip: **Fail Fast** yaitu deteksi dan laporkan error secepatnya; **Graceful Degradation** di mana aplikasi tetap functional meskipun ada kegagalan parsial; **Pesan ramah pengguna** yang informatif dan actionable. **Debugging masalah jaringan** memerlukan tools dan teknik untuk memeriksa HTTP requests/responses seperti Postman, browser DevTools, dan logging.
 
 ---
 
@@ -711,24 +623,24 @@ MAPBOX_KEY=xyz456...
 
 ### Observasi Testing
 
-**Edge Cases yang Teridentifikasi:**
+**Kasus Tepi yang Teridentifikasi:**
 
-1. **Empty Query:**
-    - Input: `q=` (empty string)
-    - Mapbox return generic worldwide result atau top-level administrative area
-    - **Learning:** Perlu add input validation sebelum API call untuk reject empty strings
-2. **Ambiguous City Names:**
+1. **Query Kosong:**
+    - Input: `q=` (string kosong)
+    - Mapbox mengembalikan hasil worldwide generik atau area administratif tingkat atas
+    - **Pembelajaran:** Perlu tambahkan validasi input sebelum API call untuk menolak string kosong
+2. **Nama Kota Ambigu:**
     - Input: "Paris" (ada Paris di France, Texas, Ontario, dll)
-    - Mapbox return top result based on `proximity=ip`—biased ke location user
-    - **Learning:** Untuk production app, perlu disambiguation UI (pilih dari multiple results)
-3. **API Rate Limiting:**
+    - Mapbox mengembalikan hasil teratas berdasarkan `proximity=ip`—bias ke lokasi pengguna
+    - **Pembelajaran:** Untuk aplikasi production, perlu UI disambiguasi (pilih dari multiple hasil)
+3. **Pembatasan Rate API:**
     - Tidak di-test karena free tier limit cukup tinggi
-    - **Learning:** Untuk production, perlu implement rate limiting handling dan caching
-4. **Response Time:**
+    - **Pembelajaran:** Untuk production, perlu implementasi penanganan pembatasan rate dan caching
+4. **Waktu Respons:**
     - Geocoding: ~200-400ms
     - Weather: ~300-500ms
-    - Total chaining: ~600-900ms (sequential, not parallel)
-    - **Learning:** Sequential approach adds latency—future improvement: parallel requests jika possible
+    - Total rantai: ~600-900ms (berurutan, bukan paralel)
+    - **Pembelajaran:** Pendekatan berurutan menambah latensi—peningkatan masa depan: permintaan paralel jika memungkinkan
 
 ### Output Sample (Test Case #1)
 
@@ -744,31 +656,15 @@ Kemungkinan hujan: 0 %
 Deskripsi: Partly cloudy
 ```
 
-### Validasi Konsep Networking
+### Validasi Konsep Jaringan
 
-✅ **HTTP Request/Response:**
+✅ **HTTP Request/Response:** Terverifikasi request method, konstruksi URL, headers (melalui logging); terverifikasi response status codes dan JSON parsing; terverifikasi skenario error (network error, invalid key, not found).
 
--   Verified: Request method, URL construction, headers (via logging)
--   Verified: Response status codes, JSON parsing
--   Verified: Error scenarios (network error, invalid key, not found)
+✅ **Integrasi API:** Terverifikasi autentikasi dengan API key di query string; terverifikasi formatting query parameters dan URL encoding; terverifikasi struktur respons sesuai dokumentasi API.
 
-✅ **API Integration:**
+✅ **Pola Asynchronous:** Terverifikasi eksekusi non-blocking (kode lanjut setelah initiate request); terverifikasi eksekusi callback setelah respons diterima; terverifikasi signature callback (error, response).
 
--   Verified: Authentication dengan API key di query string
--   Verified: Query parameters formatting dan URL encoding
--   Verified: Response structure sesuai API documentation
-
-✅ **Asynchronous Pattern:**
-
--   Verified: Non-blocking execution (code continues setelah initiate request)
--   Verified: Callback execution setelah response received
--   Verified: (error, response) callback signature
-
-✅ **API Chaining:**
-
--   Verified: Sequential execution (geocoding → weather)
--   Verified: Data dependency (output Mapbox jadi input Weatherstack)
--   Verified: Nested callback structure
+✅ **Rantai API:** Terverifikasi eksekusi berurutan (geocoding → weather); terverifikasi ketergantungan data (output Mapbox jadi input Weatherstack); terverifikasi struktur callback bersarang.
 
 ---
 
@@ -776,103 +672,37 @@ Deskripsi: Partly cloudy
 
 ### Refleksi Teknis
 
-**Pemahaman HTTP dan Network Programming:**
+**Pemahaman HTTP dan Pemrograman Jaringan:**
 
-Minggu ini adalah pengenalan pertama saya ke network programming yang real—sebelumnya hanya bekerja dengan data lokal dan file system. Beberapa insights penting:
+Minggu ini adalah pengenalan pertama saya ke pemrograman jaringan yang sesungguhnya—sebelumnya hanya bekerja dengan data lokal dan file system. **Jaringan tidak dapat diandalkan**: berbeda dengan file I/O di local machine yang relatif dapat diprediksi, operasi jaringan bisa gagal karena banyak alasan di luar kendali kita (internet down, server error, rate limiting, timeout). Ini membuat penanganan error bukan opsional tapi wajib dalam pemrograman jaringan. **Latensi penting**: rantai API berurutan memakan waktu ~600-900ms untuk selesai—ini signifikan dalam pengalaman pengguna. Di aplikasi production, perlu strategi optimasi: caching, permintaan paralel jika memungkinkan. **API sebagai antarmuka**: bekerja dengan API pihak ketiga membuka mata saya bahwa software modern adalah ekosistem—kita tidak membangun semuanya dari nol, melainkan mengintegrasikan layanan. Ini mengubah paradigma dari "bagaimana membangun ini?" menjadi "API mana yang menyediakan ini?"
 
--   **Network is Unreliable:** Berbeda dengan file I/O di local machine yang relatively predictable, network operations bisa fail karena banyak reasons beyond our control (internet down, server error, rate limiting, timeout). Ini membuat error handling **bukan optional tapi mandatory** dalam network programming.
--   **Latency Matters:** Sequential API chaining memakan waktu ~600-900ms untuk complete—ini significant dalam user experience. Di aplikasi production, perlu optimization strategies: caching, parallel requests jika possible, atau bahkan GraphQL untuk batch multiple requests.
--   **API as Interface:** Bekerja dengan third-party APIs membuka mata saya bahwa modern software adalah ecosystem—kita tidak membangun semuanya dari scratch, melainkan integrate services. Ini mengubah paradigma dari "how to build this?" menjadi "which API provides this?"
+**Tantangan Pemrograman Asynchronous:**
 
-**Asynchronous Programming Challenges:**
+Bagian tersulit adalah mengubah cara berpikir dari synchronous (eksekusi dari atas ke bawah) ke asynchronous (mendaftarkan callback, melanjutkan eksekusi, menunggu events). Diagram event loop sangat membantu untuk memvisualisasikan ini. **Realitas Callback Hell**: setelah nesting 2-3 callbacks, keterbacaan kode memburuk drastis. Saya sekarang memahami mengapa Promise dan async/await diperkenalkan—bukan hanya syntactic sugar, tapi solusi genuine untuk masalah organisasi kode. **Kesulitan debugging**: jejak tumpukan error di callback bersarang kurang informatif. Perlu banyak `console.log()` untuk melacak alur eksekusi dan nilai variabel.
 
--   **Mental Model Shift:** Hardest part adalah shifting dari synchronous thinking (top-to-bottom execution) ke asynchronous thinking (register callbacks, continue execution, wait for events). Event loop diagram sangat membantu untuk visualize ini.
--   **Callback Hell Reality:** Setelah nesting 2-3 callbacks, code readability memburuk drastically. Saya sekarang understand why Promise dan async/await di-introduce—bukan hanya syntactic sugar, tapi genuine solution untuk code organization problem.
--   **Debugging Difficulty:** Error stack trace di nested callbacks kurang informative. Perlu banyak `console.log()` untuk track execution flow dan variable values.
+**Praktik Terbaik Integrasi API:**
 
-**API Integration Best Practices:**
-
--   **Read Documentation First:** Awalnya saya trial-and-error dengan API endpoints, which is inefficient. Membaca API docs dengan careful (especially "Getting Started" dan "Response Format" sections) saves banyak waktu.
--   **Postman for Testing:** Sebelum implement di code, test API endpoints di Postman first. Ini helps understand response structure dan identify potential issues.
--   **Environment Variables:** Setup `.env` sejak awal, bukan afterthought. Habis 30 menit untuk fix Git history setelah accidentally commit API key—lesson learned the hard way.
+**Membaca dokumentasi terlebih dahulu** sangat penting—awalnya saya trial-and-error dengan API endpoints, yang tidak efisien. Membaca dokumentasi API dengan teliti (terutama bagian "Getting Started" dan "Response Format") menghemat banyak waktu. **Postman untuk testing**: sebelum implementasi di kode, test API endpoints di Postman terlebih dahulu. Ini membantu memahami struktur respons dan mengidentifikasi masalah potensial. **Environment variables**: setup `.env` sejak awal, bukan afterthought.
 
 ### Refleksi Konseptual
 
-**Protokol Layer dan Abstraction:**
+**Lapisan Protokol dan Abstraksi:**
 
-Menggunakan library `postman-request` membuat saya realize betapa banyak complexity yang di-abstract away. Di balik simple `request({ url }, callback)`, terjadi:
+Menggunakan library `postman-request` membuat saya menyadari betapa banyak kompleksitas yang diabstraksi. Di balik sederhana `request({ url }, callback)`, terjadi proses kompleks: resolusi DNS untuk mengkonversi nama domain ke alamat IP; TCP handshake untuk membangun koneksi; formatting permintaan HTTP (method, headers, body); transmisi data melalui lapisan jaringan; dan parsing respons serta eksekusi callback. Memahami lapisan abstraksi adalah kemampuan kunci—tahu kapan perlu menyelam ke detail low-level versus kapan cukup menggunakan high-level API.
 
--   DNS resolution untuk convert domain name ke IP address
--   TCP handshake untuk establish connection
--   HTTP request formatting (method, headers, body)
--   Data transmission melalui network layers
--   Response parsing dan callback execution
+**Arsitektur Client-Server:**
 
-Understanding abstraction layers adalah key skill—tahu kapan perlu dive deep ke low-level details vs kapan cukup use high-level API.
+Integrasi API adalah contoh praktis dari arsitektur client-server yang sering dibahas secara teoritis. **Pemisahan kepentingan**: Client (aplikasi kita) fokus pada UI dan logika bisnis, server (Mapbox/Weatherstack) fokus pada layanan khusus (geocoding, agregasi cuaca). **Komunikasi stateless**: setiap HTTP request independen—tidak ada "session" atau "connection" yang persisten. API key disertakan di setiap request untuk autentikasi. **Standardisasi format data**: JSON sebagai lingua franca untuk komunikasi API. Standardisasi ini memungkinkan interoperabilitas antara sistem dan bahasa yang berbeda.
 
-**Client-Server Architecture:**
+**Filosofi Penanganan Error:**
 
-API integration adalah practical example dari client-server architecture yang sering dibahas secara teoritis. Key insights:
-
--   **Separation of Concerns:** Client (aplikasi kita) fokus pada UI dan business logic, server (Mapbox/Weatherstack) fokus pada specialized services (geocoding, weather aggregation).
--   **Stateless Communication:** Setiap HTTP request independent—tidak ada "session" atau "connection" yang persisten. API key di-include di setiap request untuk authentication.
--   **Data Format Standardization:** JSON sebagai lingua franca untuk API communication. Standardization ini enable interoperability between different systems dan languages.
-
-**Error Handling Philosophy:**
-
-Network programming mengajarkan importance of robust error handling:
-
--   **Expect Failure:** Don't assume happy path—expect network failures, invalid data, API changes
--   **Fail Gracefully:** Provide informative error messages dan alternative flows when possible
--   **Defensive Programming:** Validate everything from external sources—trust but verify
-
-Ini adalah fundamental mindset shift dari "make it work" ke "make it work reliably in adversarial environments."
-
-### Penerapan di Dunia Nyata
-
-**Career Relevance:**
-
--   **Modern Development:** Hampir semua aplikasi modern consume APIs—payment gateways (Stripe), authentication (OAuth), notifications (FCM), analytics, dll. Skills ini directly applicable.
--   **Microservices Architecture:** API integration adalah core of microservices—different services communicate via HTTP APIs. Understanding ini foundational untuk modern software architecture.
--   **Full-Stack Development:** Backend developer perlu tahu how to build APIs yang easy to consume, frontend developer perlu tahu how to integrate them efficiently.
-
-**Real-World Applications:**
-
--   **Mobile Apps:** Almost all mobile apps fetch data dari backend API—news apps, social media, e-commerce, semuanya
--   **IoT Devices:** Smart home devices communicate dengan cloud APIs untuk remote control dan data logging
--   **Data Pipelines:** Extract data dari multiple sources (APIs), transform, dan load ke data warehouse
-
-### Area untuk Improvement
-
-**Technical Improvements:**
-
-1. **Migrate to Promise/Async-Await:** Refactor callback-based code untuk better readability
-2. **Error Handling Enhancement:** Implement retry logic untuk transient failures, exponential backoff
-3. **Caching Strategy:** Cache geocoding results untuk frequently queried cities—reduce API calls dan improve latency
-4. **Input Validation:** Validate user input sebelum API calls—sanitize, check format, prevent injection
-5. **Modularization:** Extract geocoding dan weather functions ke separate modules untuk reusability
-
-**Conceptual Learning:**
-
-1. **Deep Dive into HTTP:** Learn HTTP/2, HTTP/3, differences dalam performance dan multiplexing
-2. **Authentication Methods:** Explore OAuth, JWT, API key rotation best practices
-3. **API Design Principles:** Study RESTful API design, GraphQL, gRPC—understand trade-offs
-4. **Network Debugging:** Learn to use tools like Wireshark, Charles Proxy untuk inspect traffic
-
-**Next Steps:**
-
--   Implement same application dengan Promise dan async/await—compare code quality
--   Build simple REST API dengan Express.js—understand server-side perspective
--   Explore WebSocket untuk real-time communication (alternative to HTTP polling)
--   Study rate limiting, authentication middleware, dan API security best practices
+Pemrograman jaringan mengajarkan pentingnya penanganan error yang robust. **Mengharapkan kegagalan**: jangan asumsikan happy path—harapkan kegagalan jaringan, data tidak valid, perubahan API. **Gagal dengan anggun**: berikan pesan error yang informatif dan alur alternatif jika memungkinkan. **Defensive programming**: validasi semua dari sumber eksternal—percaya tapi verifikasi. Ini adalah pergeseran mindset fundamental dari "membuatnya bekerja" ke "membuatnya bekerja secara andal di lingkungan yang tidak bersahabat."
 
 ### Kesimpulan
 
-Minggu ini adalah foundational untuk memahami how modern applications communicate over networks. HTTP request/response cycle, API integration, asynchronous programming, dan error handling adalah skills yang akan digunakan di virtually every software project going forward.
+Minggu ini adalah fondasi untuk memahami bagaimana aplikasi modern berkomunikasi melalui jaringan. Siklus HTTP request/response, integrasi API, pemrograman asynchronous, dan penanganan error adalah kemampuan yang akan digunakan di hampir setiap proyek software ke depannya.
 
-Biggest takeaway: **Network programming requires different mindset**—expect failures, handle them gracefully, dan always think about latency dan reliability. Code yang works di local machine belum tentu works di production network environment dengan unreliable connections dan external dependencies.
-
-Looking forward untuk explore more advanced topics: WebSockets, GraphQL, microservices communication patterns, dan distributed systems challenges.
+Menantikan untuk mengeksplorasi topik yang lebih lanjut: WebSockets, GraphQL, pola komunikasi microservices, dan tantangan sistem terdistribusi.
 
 ---
 
