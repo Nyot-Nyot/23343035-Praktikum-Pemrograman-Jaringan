@@ -59,21 +59,21 @@ Seluruh kegiatan praktikum disusun secara berkelanjutan dari minggu ke minggu, d
 
 Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1–4** merupakan kegiatan eksplorasi mandiri dari sumber luar (tanpa laporan).
 
-| Minggu | Topik Praktikum                                                             | Deskripsi Singkat                                    | Status |
-| :----: | --------------------------------------------------------------------------- | ---------------------------------------------------- | :----: |
-|  1–4   | Pengantar & JavaScript Essentials                                           | Eksplorasi mandiri konsep dasar Node.js & JavaScript |   —    |
-|   5    | [Non-Blocking I/O & Asynchronous Programming](week-05/laporan-minggu-05.md) | Implementasi asynchronous dan sistem modular Node.js |   ✅   |
-|   6    | [HTTP Protocol & API](week-06/laporan-minggu-06.md)                         | Dasar komunikasi antara klien dan server             |   ✅   |
-|   7    | Web Server & Express.js                                                     | Membangun web server menggunakan Express             |   ⏳   |
-|   8    | API Endpoints & Architectural Patterns                                      | Penerapan pola REST, GraphQL, WebSocket, dan WebHook |   ⏳   |
-|   9    | Evaluasi Tengah Semester                                                    | Proyek mini untuk menilai pemahaman konsep dasar     |   🔒   |
-|   10   | Version Control & App Deployment                                            | Implementasi Git Workflow & deployment aplikasi      |   ⏳   |
-|   11   | MongoDB & NoSQL Databases                                                   | Integrasi MongoDB sebagai basis data aplikasi        |   ⏳   |
-|   12   | NoSQL Databases (Lanjutan)                                                  | Query lanjutan dan integrasi REST API                |   ⏳   |
-|   13   | Protokol Email (SMTP, POP3, IMAP)                                           | Simulasi sistem pengiriman dan penerimaan email      |   ⏳   |
-|   14   | Socket Programming                                                          | Implementasi komunikasi real-time berbasis socket    |   ⏳   |
-|   15   | Capstone Project                                                            | Integrasi seluruh materi menjadi satu aplikasi utuh  |   🔜   |
-|   16   | Ujian Akhir Semester                                                        | Presentasi dan evaluasi hasil akhir proyek           |   🔒   |
+| Minggu | Topik Praktikum                                                              | Deskripsi Singkat                                    | Status |
+| :----: | ---------------------------------------------------------------------------- | ---------------------------------------------------- | :----: |
+|  1–4   | Pengantar & JavaScript Essentials                                            | Eksplorasi mandiri konsep dasar Node.js & JavaScript |   —    |
+|   5    | [Non-Blocking I/O & Asynchronous Programming](/week-05/laporan-minggu-05.md) | Implementasi asynchronous dan sistem modular Node.js |   ✅   |
+|   6    | [HTTP Protocol & API](/week-06/laporan-minggu-06.md)                         | Dasar komunikasi antara klien dan server             |   ✅   |
+|   7    | [Web Server & Express.js](/week-07/laporan-minggu-07.md)                     | Membangun web server menggunakan Express             |   ✅   |
+|   8    | API Endpoints & Architectural Patterns                                       | Penerapan pola REST, GraphQL, WebSocket, dan WebHook |   ⏳   |
+|   9    | Evaluasi Tengah Semester                                                     | Proyek mini untuk menilai pemahaman konsep dasar     |   🔒   |
+|   10   | Version Control & App Deployment                                             | Implementasi Git Workflow & deployment aplikasi      |   ⏳   |
+|   11   | MongoDB & NoSQL Databases                                                    | Integrasi MongoDB sebagai basis data aplikasi        |   ⏳   |
+|   12   | NoSQL Databases (Lanjutan)                                                   | Query lanjutan dan integrasi REST API                |   ⏳   |
+|   13   | Protokol Email (SMTP, POP3, IMAP)                                            | Simulasi sistem pengiriman dan penerimaan email      |   ⏳   |
+|   14   | Socket Programming                                                           | Implementasi komunikasi real-time berbasis socket    |   ⏳   |
+|   15   | Capstone Project                                                             | Integrasi seluruh materi menjadi satu aplikasi utuh  |   🔜   |
+|   16   | Ujian Akhir Semester                                                         | Presentasi dan evaluasi hasil akhir proyek           |   🔒   |
 
 </details>
 

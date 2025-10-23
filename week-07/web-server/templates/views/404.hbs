@@ -1,0 +1,17 @@
+<html lang="en">
+  {{> head judul=judul}}
+  <body>
+    <div class="main-content">
+      {{> header}}
+      <section class="not-found">
+        <h1>{{judul}}</h1>
+        <p>{{errorMessage}}</p>
+        <p>— {{nama}}</p>
+        <p>
+          Kembali ke <a href="/">halaman utama</a> atau kunjungi <a href="/bantuan">halaman bantuan</a>.
+        </p>
+      </section>
+    </div>
+    {{> footer}}
+  </body>
+</html>

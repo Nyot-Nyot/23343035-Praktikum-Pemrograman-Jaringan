@@ -554,6 +554,8 @@ Menampilkan 1 catatan
 1. Meeting Notes
 ```
 
+![output test 1](/assets/images/week-05/week-05-test-run-1.png)
+
 **Test Run 2: Error Handling**
 
 ```bash
@@ -570,6 +572,8 @@ $ node app.js hapus --judul="NonExistent"
 judul tidak ditemukan
 ```
 
+![output test 2](/assets/images/week-05/week-05-test-run-2.png)
+
 **File JSON yang Dihasilkan (catatan.json):**
 
 ```json
@@ -584,6 +588,8 @@ judul tidak ditemukan
 	}
 ]
 ```
+
+![catatan.json](/assets/images/week-05/week-05-catatan-json.png)
 
 ---
 

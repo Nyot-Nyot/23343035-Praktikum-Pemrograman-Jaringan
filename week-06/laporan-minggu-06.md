@@ -656,6 +656,8 @@ Kemungkinan hujan: 0 %
 Deskripsi: Partly cloudy
 ```
 
+![Latihan 3](/assets/images/week-06/week-06-latihan-3.png)
+
 ### Validasi Konsep Jaringan
 
 ✅ **HTTP Request/Response:** Terverifikasi request method, konstruksi URL, headers (melalui logging); terverifikasi response status codes dan JSON parsing; terverifikasi skenario error (network error, invalid key, not found).
