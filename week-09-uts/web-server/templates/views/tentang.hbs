@@ -1,0 +1,76 @@
+<html lang="en">
+  {{> head judul="Tentang Saya"}}
+  <body>
+    <div class="main-content">
+      {{> header}}
+
+      <!-- Hero: gunakan gambar sebagai latar dekoratif dengan overlay (typographic treatment) -->
+      <section class="about-hero" aria-hidden="false">
+        <div class="about-hero__overlay">
+          <!-- Tampilkan nama dengan treatment tipografi (light + strong) -->
+          <h1 class="about-title">
+            <span class="title-strong">Dzaki Sultan Rabbani</span>
+          </h1>
+          <p class="about-sub">
+            Informatics Student · Jangan Harap Stabil · Yang Penting Jalan
+          </p>
+
+          <p class="hero-actions">
+            <a
+              class="btn-primary"
+              href="https://github.com/Nyot-Nyot"
+              aria-label="Hubungi"
+              >Hubungi</a
+            >
+            <a class="btn-outline" href="#" aria-label="Unduh CV">Unduh CV</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Hero hook image (visual anchor) -->
+      <div class="hero-hook" aria-hidden="true">
+        <img src="/img/portrait.png" alt="Portrait" />
+      </div>
+
+      <!-- Descriptive CV (Modern Typographic layout) -->
+      <section class="cv-description" aria-label="Curriculum Vitae singkat">
+        <div class="cv-body">
+          <h2 class="cv-heading">Summary</h2>
+          <p class="lead">
+            Saya Dzaki Sultan Rabbani — saya membangun aplikasi web minimalis
+            dan performan dengan fokus pada pengalaman pengguna dan
+            aksesibilitas. Saya cepat membuat prototipe, menguji asumsi desain,
+            dan mengoptimalkan berdasarkan metrik nyata.
+          </p>
+
+          <div class="stats-row" role="list" aria-label="quick stats">
+            <div class="stat" role="listitem">
+              <div class="stat-num">15</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat" role="listitem">
+              <div class="stat-num">0</div>
+              <div class="stat-label">Years</div>
+            </div>
+            <div class="stat" role="listitem">
+              <div class="stat-num">3</div>
+              <div class="stat-label">Clients</div>
+            </div>
+          </div>
+
+          <p>
+            Keahlian utama: <strong>JavaScript</strong>,
+            <strong>Node.js</strong>, <strong>HTML/CSS</strong>, dan
+            <strong>Handlebars</strong>. Untuk portfolio lengkap, kunjungi
+            GitHub saya atau unduh CV melalui tombol di atas.
+          </p>
+        </div>
+      </section>
+    </div>
+    <!-- Mobile sticky CTA -->
+    <div class="mobile-cta" aria-hidden="false">
+      <a class="btn-primary" href="/bantuan" aria-label="Hubungi">Hubungi</a>
+    </div>
+    {{> footer}}
+  </body>
+</html>

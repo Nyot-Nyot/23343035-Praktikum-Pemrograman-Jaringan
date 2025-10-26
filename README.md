@@ -26,10 +26,10 @@ Seluruh kegiatan praktikum disusun secara berkelanjutan dari minggu ke minggu, d
 
 ### 1.1 Dokumentasi Pendukung
 
--   **[Panduan Lengkap Laporan](docs/GUIDE.md)** - Tutorial detail cara mengisi setiap section laporan (WAJIB BACA!)
--   **[Quick Reference](docs/QUICK-REFERENCE.md)** - Cheat sheet cepat untuk pengerjaan laporan
--   **[Template Laporan](docs/!template.md)** - Template kosong untuk copy-paste
--   **[Assets Guide](assets/README.md)** - Panduan penggunaan folder assets
+- **[Panduan Lengkap Laporan](docs/GUIDE.md)** - Tutorial detail cara mengisi setiap section laporan (WAJIB BACA!)
+- **[Quick Reference](docs/QUICK-REFERENCE.md)** - Cheat sheet cepat untuk pengerjaan laporan
+- **[Template Laporan](docs/!template.md)** - Template kosong untuk copy-paste
+- **[Assets Guide](assets/README.md)** - Panduan penggunaan folder assets
 
 </details>
 
@@ -65,8 +65,8 @@ Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1
 |   5    | [Non-Blocking I/O & Asynchronous Programming](/week-05/laporan-minggu-05.md) | Implementasi asynchronous dan sistem modular Node.js |   ✅   |
 |   6    | [HTTP Protocol & API](/week-06/laporan-minggu-06.md)                         | Dasar komunikasi antara klien dan server             |   ✅   |
 |   7    | [Web Server & Express.js](/week-07/laporan-minggu-07.md)                     | Membangun web server menggunakan Express             |   ✅   |
-|   8    | API Endpoints & Architectural Patterns                                       | Penerapan pola REST, GraphQL, WebSocket, dan WebHook |   ⏳   |
-|   9    | Evaluasi Tengah Semester                                                     | Proyek mini untuk menilai pemahaman konsep dasar     |   🔒   |
+|   8    | [API Endpoints & Architectural](/week-08/laporan-minggu-08.md) Patterns      | Penerapan pola REST, GraphQL, WebSocket, dan WebHook |   ✅   |
+|   9    | [Evaluasi Tengah Semester](/week-09-uts/laporan-minggu-09.md)                | Proyek mini untuk menilai pemahaman konsep dasar     |   ✅   |
 |   10   | Version Control & App Deployment                                             | Implementasi Git Workflow & deployment aplikasi      |   ⏳   |
 |   11   | MongoDB & NoSQL Databases                                                    | Integrasi MongoDB sebagai basis data aplikasi        |   ⏳   |
 |   12   | NoSQL Databases (Lanjutan)                                                   | Query lanjutan dan integrasi REST API                |   ⏳   |
@@ -114,9 +114,9 @@ Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1
 
 **Konvensi Penamaan:**
 
--   Laporan: `laporan-minggu-XX.md` di root folder `week-XX/`
--   Project folder: Nama deskriptif sesuai topik (misal: `aplikasiCuaca`, `buku-catatan`)
--   Setiap week memiliki struktur mandiri (laporan + kode dalam satu folder)
+- Laporan: `laporan-minggu-XX.md` di root folder `week-XX/`
+- Project folder: Nama deskriptif sesuai topik (misal: `aplikasiCuaca`, `buku-catatan`)
+- Setiap week memiliki struktur mandiri (laporan + kode dalam satu folder)
 
 </details>
 
@@ -127,11 +127,11 @@ Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1
 
 Pada tahap akhir praktikum, mahasiswa akan mengembangkan **aplikasi web berbasis jaringan** yang mengintegrasikan seluruh materi yang telah dipelajari, meliputi:
 
--   API modular dengan **Express.js**
--   Integrasi **MongoDB** sebagai database utama
--   Komunikasi **real-time** menggunakan Socket.IO
--   Implementasi **email protocol** dengan Nodemailer
--   Deployment aplikasi ke server publik
+- API modular dengan **Express.js**
+- Integrasi **MongoDB** sebagai database utama
+- Komunikasi **real-time** menggunakan Socket.IO
+- Implementasi **email protocol** dengan Nodemailer
+- Deployment aplikasi ke server publik
 
 </details>
 

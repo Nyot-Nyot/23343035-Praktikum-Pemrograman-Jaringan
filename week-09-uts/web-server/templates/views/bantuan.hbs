@@ -1,0 +1,131 @@
+<html lang="en">
+  {{> head judul="FAQ"}}
+  <body>
+    <div class="main-content">
+      {{> header}}
+      <section class="faq">
+        <p class="muted">
+          Pertanyaan yang sering diajukan tentang aplikasi ini. Klik setiap
+          pertanyaan untuk melihat jawabannya.
+        </p>
+
+        <div class="faq-list">
+          <details>
+            <summary>a. Halaman ini digunakan untuk apa?</summary>
+            <div class="faq-answer">
+              <p>
+                Halaman Bantuan ini memberikan informasi mengenai tujuan
+                aplikasi, cara menggunakannya, dan menjawab pertanyaan umum.
+                Tujuannya membantu pengguna memahami fitur yang tersedia dan
+                bagaimana berinteraksi dengan layanan yang disediakan.
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>b. Apa itu API?</summary>
+            <div class="faq-answer">
+              <p>
+                API (Application Programming Interface) adalah sekumpulan aturan
+                dan mekanisme yang memungkinkan aplikasi berbeda saling
+                berkomunikasi. API mendefinisikan metode, format data, dan
+                endpoint yang dapat digunakan untuk meminta atau mengirim data
+                antara klien dan server.
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>c. API apa yang digunakan dalam aplikasi ini?</summary>
+            <div class="faq-answer">
+              <p>
+                Aplikasi ini memakai tiga layanan API pihak ketiga utama,
+                masing‑masing untuk fungsi berbeda. Semua panggilan ke API
+                dilakukan dari server agar kunci API (API key) tidak terekspos
+                ke klien.
+              </p>
+
+              <h4>1. Weatherstack — data cuaca</h4>
+              <p>
+                Digunakan untuk mengambil kondisi cuaca saat ini dan/atau
+                prakiraan berdasarkan koordinat atau nama lokasi. Respons
+                biasanya berisi temperatur, kondisi/deskripsi (mis. "clear",
+                "rain"), kecepatan angin, kelembapan, dan ikon representatif.
+              </p>
+
+              <h4>2. Mapbox — geocoding & peta</h4>
+              <p>
+                Mapbox dipakai untuk geocoding (mengubah alamat/nama tempat
+                menjadi koordinat) dan untuk menampilkan peta/preview lokasi
+                bila diperlukan. Endpoint geocoding mengembalikan koordinat
+                (lat/lon), nama tempat yang terstandardisasi, dan informasi
+                bounding box. Perlu token Mapbox (juga disimpan di server or
+                pada konfigurasi frontend sesuai pedoman), serta kewajiban
+                memberi atribusi Mapbox pada UI sesuai ketentuan layanan.
+              </p>
+
+              <h4>3. Mediastack — agregasi berita</h4>
+              <p>
+                Mediastack digunakan untuk mengambil daftar headline dan artikel
+                berita (title, description, sumber, URL, thumbnail, waktu
+                publikasi). Hasilnya kami olah pada server lalu ditampilkan di
+                halaman "Berita". Perhatikan: sanitasi konten penting sebelum
+                ditampilkan (hindari menyematkan HTML dari sumber langsung), dan
+                juga waspadai batasan permintaan serta aturan komersial pada
+                tier API yang dipilih.
+              </p>
+            </div>
+          </details>
+
+          <details>
+            <summary>d. Salah satu pola arsitektur API adalah RESTful</summary>
+            <div class="faq-answer">
+              <h4>Cara Kerja API RESTful</h4>
+
+              <h5>Alur Inti Request-Response</h5>
+              <p>
+                API RESTful bekerja melalui proses request-response yang
+                terstandarisasi. Klien mengirimkan HTTP request (GET, POST, PUT,
+                DELETE) ke server melalui load balancer yang mendistribusikan
+                beban. Request kemudian melewati API gateway untuk autentikasi
+                dan rate limiting.
+              </p>
+
+              <h5>Proses Pemrosesan Data</h5>
+              <p>
+                Setelah otentikasi berhasil, router mengarahkan request ke
+                controller yang sesuai. Controller memvalidasi input data dan
+                meneruskan ke business logic layer. Di sini, sistem berinteraksi
+                dengan database melalui ORM dan memeriksa cache untuk optimasi
+                performa. Business logic mengolah data sesuai aturan bisnis
+                aplikasi.
+              </p>
+
+              <h5>Pembentukan Response</h5>
+              <p>
+                Data hasil pemrosesan diformat menjadi JSON/XML oleh serializer.
+                Response formatter menambahkan metadata dan status code yang
+                sesuai. Sistem mencatat aktivitas melalui logging sebelum
+                mengembalikan response ke klien. Error handling terpusat
+                mengelola exceptions dan mengembalikan error response yang
+                konsisten.
+              </p>
+
+              <p>
+                Seluruh proses ini memastikan komunikasi yang efisien antara
+                klien dan server dengan maintainability dan security yang baik.
+              </p>
+            </div>
+            <div class="faq-image">
+              <img
+                src="/img/api-flowchart.png"
+                alt="Diagram alur API RESTful"
+              />
+            </div>
+          </details>
+        </div>
+      </section>
+    </div>
+    {{> footer}}
+  </body>
+</html>

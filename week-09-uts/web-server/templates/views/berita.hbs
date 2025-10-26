@@ -1,0 +1,52 @@
+<html lang="en">
+  {{> head judul="Berita"}}
+  <body>
+    <div class="main-content">
+      {{> header}}
+
+      <section class="news-hero">
+        <h1>Berita</h1>
+        <p class="muted">
+          Berita terbaru yang dikumpulkan dari Mediastack API.
+        </p>
+      </section>
+
+      <section class="news">
+        {{#if error}}
+        <div class="weather-error">{{error}}</div>
+        {{else}} {{#if articles}}
+        <ul class="news-list">
+          {{#each articles}}
+          <li class="news-item">
+            <a
+              class="news-link"
+              href="{{url}}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{#if image}}
+              <div class="news-media">
+                <img src="{{image}}" alt="{{title}}" loading="lazy" />
+              </div>
+              {{/if}}
+
+              <div class="news-content">
+                <h3 class="news-title">{{title}}</h3>
+                {{#if source}}
+                <div class="news-meta">{{source}} • {{published_at}}</div>
+                {{/if}} {{#if description}}
+                <p class="news-desc">{{description}}</p>
+                {{/if}}
+              </div>
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+        {{else}}
+        <div class="weather-loading">Tidak ada berita ditemukan.</div>
+        {{/if}} {{/if}}
+      </section>
+    </div>
+    {{> footer}}
+  </body>
+</html>

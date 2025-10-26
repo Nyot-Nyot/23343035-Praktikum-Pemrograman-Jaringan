@@ -1,0 +1,851 @@
+body {
+  color: #333333;
+  /* use a consistent system font stack across the project */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  max-width: 650px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+footer {
+  color: #888888;
+  border-top: 1px solid #eeeeee;
+  margin-top: 16px;
+  padding: 16px 0;
+}
+header {
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+h1 {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+header a {
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
+}
+.portrait {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+form {
+  background: #fff;
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.field-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end; /* align inputs and actions on the same baseline */
+}
+
+.field-group > .field {
+  flex: 1 1 0;
+  min-width: 100px;
+}
+
+.field-group > .field-actions {
+  flex: 0 0 auto; /* keep button to its intrinsic size */
+  display: flex;
+  align-items: flex-end; /* align the button with the input */
+}
+
+.field-actions button {
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #333333;
+  background: #333333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.field-actions button:hover {
+  background: #424242;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Weather result styling */
+.weather-result {
+  margin-top: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.weather-loading {
+  padding: 1rem;
+  background: #fffbe6;
+  border-radius: 6px;
+  border: 1px solid #ffe58f;
+}
+.weather-error {
+  padding: 1rem;
+  background: #fff1f0;
+  border-radius: 6px;
+  border: 1px solid #ffa39e;
+  color: #a8071a;
+}
+.weather-card {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+.weather-location {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.25rem;
+}
+.weather-desc {
+  margin: 0 0 0.75rem 0;
+  color: #555;
+}
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+.weather-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-top: 1px dashed #f0f0f0;
+}
+.weather-row .label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ===== Additional styles for About / CV (monochrome, elegant) ===== */
+.about-hero {
+  height: 260px;
+  background-image: url("/img/gambar.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* News list styling (kehalusan monochrome) */
+.news-hero {
+  margin: 1rem 0;
+}
+.news-hero h1 {
+  font-size: 32px;
+  margin: 0 0 0.25rem 0;
+}
+.news-hero .muted {
+  color: #666;
+  margin: 0 0 1rem 0;
+}
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+.news-item {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 0.9rem;
+  border-radius: 6px;
+}
+.news-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.news-media {
+  flex: 0 0 140px;
+  max-width: 140px;
+}
+.news-media img {
+  width: 140px;
+  height: 96px;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+  filter: grayscale(100%) contrast(90%);
+}
+
+/* small badge used in CV (initials) */
+.cv-photo--badge {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #1b1b1b, #000);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Hero badge (small decorative circle anchored in hero) */
+.hero-badge {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-image: url("/img/gambar.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) contrast(90%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.06);
+}
+.news-content {
+  flex: 1 1 auto;
+}
+.news-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.05rem;
+}
+.news-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.4rem;
+}
+.news-desc {
+  margin: 0;
+  color: #333;
+}
+
+@media (max-width: 560px) {
+  .news-item {
+    padding: 0.8rem;
+  }
+  .news-link {
+    display: block;
+  }
+  .news-media {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 0.5rem;
+  }
+  .news-media img {
+    width: 100%;
+    height: auto;
+  }
+  .news-title {
+    font-size: 1rem;
+  }
+}
+.about-hero__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  color: #ffffff;
+}
+.about-title {
+  margin: 0 0 0.6rem 0;
+  font-size: 56px; /* larger, standout headline */
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #e6e6e6;
+}
+.about-sub {
+  margin-top: 0.4rem;
+  color: #e6e6e6;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Hero hook image (visual anchor) */
+.hero-hook {
+  margin: 0.75rem 0 1.5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Hero hook: keep a 4:3 frame and crop the portrait vertically */
+.hero-hook {
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  margin: 1rem auto;
+}
+.hero-hook img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop to fill 4:3 box */
+  object-position: center center; /* adjust if you want top/left focal point */
+  display: block;
+  filter: grayscale(100%) contrast(92%);
+}
+
+.title-light {
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 28px;
+}
+.title-strong {
+  font-weight: 900;
+  color: #fff;
+  font-size: 58px;
+}
+.about-hero__overlay .hero-actions {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.stats-row {
+  display: flex;
+  gap: 1.25rem;
+  margin: 0.75rem 0 1rem 0;
+}
+.stats-row .stat {
+  background: #fafafa;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+.stat-num {
+  font-weight: 800;
+  font-size: 18px;
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.cv {
+  margin: 2rem 0;
+}
+.cv-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+.cv-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(90%);
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+.cv-body {
+  background: #ffffff;
+  color: #111;
+  padding: 1.25rem;
+  border-radius: 6px;
+  border: 1px solid #e9e9e9;
+}
+.cv-name {
+  margin: 0 0 0.25rem 0;
+  font-size: 22px;
+}
+.cv-role {
+  margin: 0 0 1rem 0;
+  color: #444;
+}
+.cv-section h3 {
+  margin: 0.8rem 0 0.4rem 0;
+  font-size: 1rem;
+}
+.cv-section ul {
+  margin: 0.25rem 0 0 1.1rem;
+}
+.cv-actions {
+  margin-top: 1rem;
+}
+.btn-outline {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid #111;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+.btn-primary:hover {
+  background: #333;
+}
+
+/* mobile sticky CTA shown on narrow screens */
+.mobile-cta {
+  display: none;
+}
+
+/* ===== Visual CV styles ===== */
+.cv-visual {
+  margin: 1.5rem 0;
+}
+.cv-visual__card {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+.cv-photo--circle img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: grayscale(100%) contrast(95%);
+  display: block;
+}
+.cv-info {
+  flex: 1;
+}
+.cv-name {
+  margin: 0;
+  font-size: 20px;
+}
+.cv-role {
+  margin: 0.25rem 0 0.85rem 0;
+  color: #555;
+}
+.cv-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+.stat {
+  text-align: center;
+}
+.stat-num {
+  font-weight: 700;
+  font-size: 18px;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: #666;
+}
+.skill-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.4rem 0 0.8rem 0;
+}
+.skill-chips span {
+  background: #f4f4f4;
+  color: #111;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+.skill-bars .skill {
+  margin-bottom: 0.5rem;
+}
+.skill-name {
+  font-size: 0.85rem;
+  color: #444;
+  margin-bottom: 0.25rem;
+}
+.skill-bar {
+  background: #f0f0f0;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #111, #555);
+  display: block;
+}
+.cv-contact {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.75rem;
+}
+.icon-link {
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+}
+.icon-link:hover {
+  border-bottom-color: #111;
+}
+.cv-note {
+  margin-top: 0.8rem;
+  color: #555;
+}
+
+@media (max-width: 760px) {
+  .cv-visual__card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cv-stats {
+    width: 100%;
+  }
+  .hero-badge {
+    right: 0.75rem;
+    top: 0.75rem;
+    width: 54px;
+    height: 54px;
+  }
+}
+
+/* Keep it tidy on small screens */
+@media (max-width: 760px) {
+  .about-hero {
+    height: 180px;
+  }
+  .cv-grid {
+    grid-template-columns: 1fr;
+  }
+  .cv-photo {
+    order: -1;
+  }
+  .cv-photo img {
+    height: 180px;
+  }
+}
+
+/* Print-friendly adjustments */
+@media print {
+  .about-hero,
+  .cv-photo {
+    display: none;
+  }
+  body {
+    max-width: none;
+    padding: 0.5cm;
+    color: #000;
+  }
+  .cv-body {
+    box-shadow: none;
+    border: none;
+  }
+}
+
+/* Visual showcase styles */
+.visual-showcase {
+  margin: 2rem 0;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.project-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.project-thumb {
+  background-size: cover;
+  background-position: center;
+  height: 120px;
+  filter: grayscale(100%) contrast(85%);
+}
+.project-body {
+  padding: 0.6rem 0.75rem;
+}
+.project-body h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+}
+.project-body .muted {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.skills-and-timeline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.skills-visual h4,
+.timeline h4 {
+  margin: 0 0 0.5rem 0;
+}
+.skill-radials {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.radial {
+  text-align: center;
+}
+.circular-chart {
+  width: 72px;
+  height: 72px;
+  display: block;
+}
+.circle-bg {
+  fill: none;
+  stroke: #222;
+  stroke-opacity: 0.08;
+  stroke-width: 3.8;
+}
+.circle {
+  fill: none;
+  stroke: #111;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+.radial-label {
+  font-size: 0.85rem;
+  color: #333;
+  margin-top: 0.35rem;
+}
+
+.timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.timeline-list li {
+  padding: 0.35rem 0;
+  border-left: 2px solid #f0f0f0;
+  margin-left: 0.5rem;
+  padding-left: 0.75rem;
+  color: #444;
+}
+
+.contact-badges {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.badge {
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: #f4f4f4;
+  color: #111;
+  text-decoration: none;
+  border: 1px solid #e5e5e5;
+}
+
+/* Descriptive CV styling (typographic, standout but monochrome) */
+.cv-description {
+  margin: 1.5rem 0 2rem 0;
+}
+.cv-description .cv-body {
+  background: #ffffff;
+  color: #111;
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+.cv-description .cv-heading {
+  margin: 0 0 0.5rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.2px;
+  color: #111;
+  font-weight: 700;
+}
+.cv-description .lead {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #222;
+  margin-bottom: 0.75rem;
+  font-style: normal;
+}
+.cv-description p {
+  color: #333;
+  line-height: 1.55;
+  margin: 0 0 0.75rem 0;
+}
+
+@media (max-width: 760px) {
+  .cv-description .cv-body {
+    padding: 1rem;
+  }
+  .about-hero__overlay {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .skills-and-timeline {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile sticky CTA styling */
+@media (max-width: 560px) {
+  .mobile-cta {
+    display: flex;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    justify-content: center;
+    z-index: 9999;
+  }
+  .mobile-cta .btn-primary {
+    width: 100%;
+    border-radius: 999px;
+    padding: 0.8rem;
+    text-align: center;
+    font-weight: 600;
+  }
+}
+
+/* FAQ / Bantuan styles */
+.faq {
+  margin: 1.25rem 0 2rem 0;
+}
+.faq h1 {
+  font-size: 36px;
+  margin: 0 0 0.25rem 0;
+  font-weight: 800;
+  color: #111;
+}
+.faq .muted {
+  color: #666;
+  margin-bottom: 1rem;
+}
+.faq dl {
+  border-top: 1px solid #f0f0f0;
+  margin-top: 0.75rem;
+}
+.faq dt {
+  padding: 0.9rem 0 0.4rem 0;
+  font-weight: 700;
+}
+.faq dd {
+  margin: 0 0 0.8rem 0;
+  color: #333;
+}
+.faq-image {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+.faq-image img {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 8px;
+  filter: grayscale(100%) contrast(92%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 760px) {
+  .faq h1 {
+    font-size: 28px;
+  }
+}
+
+/* details/summary (collapsible FAQ) */
+.faq-list details {
+  border-top: 1px solid #f0f0f0;
+  padding: 0.9rem 0;
+}
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+  outline: none;
+  padding: 0;
+  display: block;
+  font-size: 1rem;
+}
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+.faq-list summary::after {
+  content: "\25be"; /* small down chevron */
+  float: right;
+  transition: transform 0.2s ease;
+  color: #666;
+}
+.faq-list details[open] summary::after {
+  transform: rotate(180deg);
+}
+.faq-answer {
+  margin-top: 0.5rem;
+  color: #333;
+}
+.faq-list details[open] .faq-answer {
+  animation: faqFadeIn 180ms ease-in;
+}
+@keyframes faqFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
