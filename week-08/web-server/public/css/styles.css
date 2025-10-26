@@ -1,0 +1,141 @@
+body {
+  color: #333333;
+  font-family: arial;
+  max-width: 650px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: sans-serif;
+  padding: 2rem;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+footer {
+  color: #888888;
+  border-top: 1px solid #eeeeee;
+  margin-top: 16px;
+  padding: 16px 0;
+}
+header {
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+h1 {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+header a {
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
+}
+.portrait {
+  width: 650px;
+}
+
+form {
+  background: #fff;
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.field-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end; /* align inputs and actions on the same baseline */
+}
+
+.field-group > .field {
+  flex: 1 1 0;
+  min-width: 100px;
+}
+
+.field-group > .field-actions {
+  flex: 0 0 auto; /* keep button to its intrinsic size */
+  display: flex;
+  align-items: flex-end; /* align the button with the input */
+}
+
+.field-actions button {
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #333333;
+  background: #333333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.field-actions button:hover {
+  background: #424242;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Weather result styling */
+.weather-result {
+  margin-top: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.weather-loading {
+  padding: 1rem;
+  background: #fffbe6;
+  border-radius: 6px;
+  border: 1px solid #ffe58f;
+}
+.weather-error {
+  padding: 1rem;
+  background: #fff1f0;
+  border-radius: 6px;
+  border: 1px solid #ffa39e;
+  color: #a8071a;
+}
+.weather-card {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+.weather-location {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.25rem;
+}
+.weather-desc {
+  margin: 0 0 0.75rem 0;
+  color: #555;
+}
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+.weather-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-top: 1px dashed #f0f0f0;
+}
+.weather-row .label {
+  color: #666;
+  font-size: 0.9rem;
+}

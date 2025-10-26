@@ -1,0 +1,31 @@
+<html lang="en">
+  {{> head judul="Index"}}
+  <body>
+    <div class="main-content">
+      {{> header}}
+      <form id="weather-form" action="/cuaca" method="get">
+        <h3>Cari Informasi Cuaca</h3>
+        <div class="field-group">
+          <div class="field">
+            <label for="address">Lokasi</label>
+            <input
+              id="address"
+              name="address"
+              type="text"
+              placeholder="Masukkan nama kota atau alamat"
+              required
+            />
+          </div>
+          <div class="field-actions">
+            <button type="submit">Cari Cuaca</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="weather-result" class="weather-result" aria-live="polite">
+        {{!-- ini diisi hasil pencarian --}}
+      </div>
+    </div>
+    {{> footer}}
+  </body>
+</html>
