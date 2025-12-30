@@ -1,0 +1,122 @@
+/* Merged styles: base site styles (from week-07) + chat-specific styles */
+
+body {
+  color: #333333;
+  font-family: arial, Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0 16px;
+  min-height: 100vh;
+  background: #f4f4f4;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 64px;
+  margin: 0;
+}
+
+header a {
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+/* Chat layout */
+.chat-container {
+  display: flex;
+  height: calc(100vh - 120px);
+  gap: 16px;
+}
+
+.chat-main {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.chat-sidebar {
+  flex: 1;
+  background: #fff;
+  padding: 1rem;
+  border-left: 1px solid #ddd;
+  min-width: 200px;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  background: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+}
+
+.message {
+  margin-bottom: 0.75rem;
+}
+
+.message .meta {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.message .text {
+  margin: 0;
+}
+
+#chat-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#chat-form input {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+#chat-form button {
+  padding: 0.5rem 1rem;
+}
+
+.room-info {
+  color: #fff;
+}
+
+footer {
+  color: #888888;
+  border-top: 1px solid #eeeeee;
+  margin-top: 16px;
+  padding: 16px 0;
+}
+
+/* small responsive tweaks */
+@media (max-width: 700px) {
+  .chat-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .chat-sidebar {
+    order: 2;
+  }
+  .chat-main {
+    order: 1;
+  }
+  h1 {
+    font-size: 40px;
+  }
+}

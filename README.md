@@ -70,10 +70,10 @@ Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1
 |   10   | Version Control & App Deployment                                             | Implementasi Git Workflow & deployment aplikasi      |   ⏳   |
 |   11   | [MongoDB & NoSQL Databases](/week-11/laporan-minggu-10.md)                   | Integrasi MongoDB sebagai basis data aplikasi        |   ✅   |
 |   12   | NoSQL Databases (Lanjutan)                                                   | Query lanjutan dan integrasi REST API                |   ⏳   |
-|   13   | Protokol Email (SMTP, POP3, IMAP)                                            | Simulasi sistem pengiriman dan penerimaan email      |   ⏳   |
-|   14   | Socket Programming                                                           | Implementasi komunikasi real-time berbasis socket    |   ⏳   |
+|   13   | [Protokol Email (SMTP, POP3, IMAP)](https://github.com/Nyot-Nyot/mailer)     | Simulasi sistem pengiriman dan penerimaan email      |   ✅   |
+|   14   | [Socket Programming](/week-14/ruangobrol/README.md)                          | Implementasi komunikasi real-time berbasis socket    |   ✅   |
 |   15   | Capstone Project                                                             | Integrasi seluruh materi menjadi satu aplikasi utuh  |   🔜   |
-|   16   | Ujian Akhir Semester                                                         | Presentasi dan evaluasi hasil akhir proyek           |   🔒   |
+|   16   | Ujian Akhir Semester                                                         | Presentasi dan evaluasi hasil akhir proyek           |   ✅   |
 
 </details>
 
