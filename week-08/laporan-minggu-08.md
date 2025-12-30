@@ -241,10 +241,6 @@ Test cases singkat:
 
 Catatan performa: karena kedua API eksternal memerlukan panggilan jaringan, pengalaman pengguna tergantung latensi. Untuk memperbaiki UX pada kondisi koneksi lambat, kita menampilkan state loading di `#weather-result` saat fetch sedang berjalan.
 
-## 7. Refleksi & Rencana Pengembangan
-
-Secara teknis saya belajar lebih banyak tentang handling data dari layanan pihak ketiga dan menerapkan defensive programming ketika mengonsumsi JSON yang mungkin berubah-ubah. Saya paham kenapa workflow "geocoding → weather" harus berurutan dan bagaimana Node.js event loop memungkinkan server tetap responsif meskipun menunggu panggilan jaringan.
-
 ## 8. Referensi & Sumber Belajar
 
 - Mapbox Geocoding API Documentation: https://docs.mapbox.com/api/search/geocoding/

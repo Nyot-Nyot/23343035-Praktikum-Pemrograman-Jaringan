@@ -18,9 +18,9 @@
 
 **Tujuan pembelajaran:**
 
--   Memahami [konsep A] dalam konteks jaringan
--   Mengimplementasikan [feature B]
--   Membandingkan [approach C vs D]
+- Memahami [konsep A] dalam konteks jaringan
+- Mengimplementasikan [feature B]
+- Membandingkan [approach C vs D]
 
 ---
 
@@ -55,9 +55,9 @@ Aplikasi
 
 **Tools:**
 
--   [Excalidraw](https://excalidraw.com/) - Simple & beautiful
--   [ASCIIFlow](https://asciiflow.com/) - ASCII diagrams
--   [Draw.io](https://app.diagrams.net/) - Professional diagrams
+- [Excalidraw](https://excalidraw.com/) - Simple & beautiful
+- [ASCIIFlow](https://asciiflow.com/) - ASCII diagrams
+- [Draw.io](https://app.diagrams.net/) - Professional diagrams
 
 ---
 
@@ -65,17 +65,17 @@ Aplikasi
 
 **Format fitur:**
 
--   **[Feature name]:** [What it does, not how you did it]
+- **[Feature name]:** [What it does, not how you did it]
 
-    **Code snippet template:**
+  **Code snippet template:**
 
-    **[Explain what this code does in network context]:**
+  **[Explain what this code does in network context]:**
 
-    ```javascript
-    // Code with meaningful comments
-    ```
+  ```javascript
+  // Code with meaningful comments
+  ```
 
-    **Penjelasan:** [Why this is important for network programming]
+  **Penjelasan:** [Why this is important for network programming]
 
 ---
 
@@ -86,19 +86,19 @@ Aplikasi
 ```markdown
 **[Nama Kendala]:**
 
--   **Masalah:** [Apa yang terjadi]
--   **Penyebab:** [Root cause - hasil debugging]
--   **Solusi:** [Concrete steps]
--   **Pembelajaran:** [What you learned - PENTING!]
+- **Masalah:** [Apa yang terjadi]
+- **Penyebab:** [Root cause - hasil debugging]
+- **Solusi:** [Concrete steps]
+- **Pembelajaran:** [What you learned - PENTING!]
 ```
 
 **Common issues:**
 
--   API key exposure → Environment variables
--   Callback hell → Async/await
--   CORS errors → Server configuration
--   Network timeouts → Error handling & retry
--   Rate limiting → Caching & throttling
+- API key exposure → Environment variables
+- Callback hell → Async/await
+- CORS errors → Server configuration
+- Network timeouts → Error handling & retry
+- Rate limiting → Caching & throttling
 
 ---
 
@@ -112,32 +112,14 @@ Aplikasi
 
 **Edge cases to consider:**
 
--   Empty input
--   Invalid data format
--   Network failure
--   API rate limit exceeded
--   Timeout scenarios
--   Concurrent requests
+- Empty input
+- Invalid data format
+- Network failure
+- API rate limit exceeded
+- Timeout scenarios
+- Concurrent requests
 
 ---
-
-## 7. Refleksi
-
-**Quick prompts:**
-
-```markdown
-### 7.1 Apa yang Saya Pelajari
-
-**Secara Teknis:**
-
--   [Technical insight 1]
--   [Technical insight 2]
-
-**Secara Konseptual:**
-
--   [Conceptual understanding]
--   [Connection to previous weeks]
-```
 
 ![footer](https://capsule-render.vercel.app/api?type=slice&height=300&color=gradient&text=Module%20X&section=footer&reversal=false&textBg=false&fontAlign=40&fontAlignY=65&animation=fadeIn&rotate=20&desc=HTTP%20Request%20and%20API&descAlign=50&descAlignY=78)
 
@@ -158,14 +140,14 @@ Aplikasi
 ### A.2 Lists
 
 ```markdown
--   Unordered
--   List
+- Unordered
+- List
 
 1. Ordered
 2. List
 
--   [ ] Todo unchecked
--   [x] Todo checked
+- [ ] Todo unchecked
+- [x] Todo checked
 ```
 
 ### A.3 Code
@@ -206,24 +188,24 @@ const server = http.createServer();
 
 ### B.1 Untuk Penjelasan Konsep:
 
--   "...adalah protokol yang mendefinisikan..."
--   "...memungkinkan client dan server untuk..."
--   "Dalam konteks pemrograman jaringan, ini penting karena..."
--   "Berbeda dengan [X], [Y] menggunakan approach..."
+- "...adalah protokol yang mendefinisikan..."
+- "...memungkinkan client dan server untuk..."
+- "Dalam konteks pemrograman jaringan, ini penting karena..."
+- "Berbeda dengan [X], [Y] menggunakan approach..."
 
 ### B.2 Untuk Refleksi:
 
--   "Sebelumnya saya tidak paham..., tapi sekarang saya mengerti bahwa..."
--   "Insight paling penting dari minggu ini adalah..."
--   "Konsep ini connect dengan materi week [X] karena..."
--   "Untuk improvement, saya perlu..."
+- "Sebelumnya saya tidak paham..., tapi sekarang saya mengerti bahwa..."
+- "Insight paling penting dari minggu ini adalah..."
+- "Konsep ini connect dengan materi week [X] karena..."
+- "Untuk improvement, saya perlu..."
 
 ### B.3 Untuk Problem Solving:
 
--   "Root cause dari issue ini adalah..."
--   "Setelah debugging, saya menemukan bahwa..."
--   "Solusi yang saya implement adalah..."
--   "Dari issue ini, saya belajar bahwa..."
+- "Root cause dari issue ini adalah..."
+- "Setelah debugging, saya menemukan bahwa..."
+- "Solusi yang saya implement adalah..."
+- "Dari issue ini, saya belajar bahwa..."
 
 ---
 
@@ -231,19 +213,19 @@ const server = http.createServer();
 
 **WAJIB:**
 
--   [ ] Section "Konsep Pemrograman Jaringan" terisi lengkap (minimal 2 konsep)
--   [ ] Ada diagram/visualisasi arsitektur
--   [ ] Code snippets ada penjelasan konteks
--   [ ] Ada analisis perbandingan (bukan cuma implementasi)
--   [ ] Test cases documented
--   [ ] Refleksi pembelajaran (not just "selesai")
+- [ ] Section "Konsep Pemrograman Jaringan" terisi lengkap (minimal 2 konsep)
+- [ ] Ada diagram/visualisasi arsitektur
+- [ ] Code snippets ada penjelasan konteks
+- [ ] Ada analisis perbandingan (bukan cuma implementasi)
+- [ ] Test cases documented
+- [ ] Refleksi pembelajaran (not just "selesai")
 
 **OPTIONAL tapi RECOMMENDED:**
 
--   [ ] Screenshot/output disertakan
--   [ ] Link ke file kode yang relevant
--   [ ] Referensi sumber belajar
--   [ ] Security & performance discussion
+- [ ] Screenshot/output disertakan
+- [ ] Link ke file kode yang relevant
+- [ ] Referensi sumber belajar
+- [ ] Security & performance discussion
 
 ---
 
@@ -263,12 +245,10 @@ const server = http.createServer();
 
 ## E. Resources
 
--   **Panduan Lengkap:** [`GUIDE.md`](GUIDE.md)
--   **Template:** [`!template.md`](!template.md)
--   **Markdown Guide:** [GitHub Markdown Docs](https://docs.github.com/en/get-started/writing-on-github)
--   **Diagram Tools:** Excalidraw, Draw.io, ASCIIFlow
--   **Node.js Docs:** [nodejs.org/docs](https://nodejs.org/docs)
+- **Panduan Lengkap:** [`GUIDE.md`](GUIDE.md)
+- **Template:** [`!template.md`](!template.md)
+- **Markdown Guide:** [GitHub Markdown Docs](https://docs.github.com/en/get-started/writing-on-github)
+- **Diagram Tools:** Excalidraw, Draw.io, ASCIIFlow
+- **Node.js Docs:** [nodejs.org/docs](https://nodejs.org/docs)
 
 ---
-
-**💡 Remember:** Laporan yang bagus = Dokumentasi bahwa kamu PAHAM, bukan sekedar SELESAI!

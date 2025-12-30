@@ -28,7 +28,7 @@ Seluruh kegiatan praktikum disusun secara berkelanjutan dari minggu ke minggu, d
 
 - **[Panduan Lengkap Laporan](docs/GUIDE.md)** - Tutorial detail cara mengisi setiap section laporan (WAJIB BACA!)
 - **[Quick Reference](docs/QUICK-REFERENCE.md)** - Cheat sheet cepat untuk pengerjaan laporan
-- **[Template Laporan](docs/!template.md)** - Template kosong untuk copy-paste
+- **[Template Laporan](docs/template.md)** - Template kosong untuk copy-paste
 - **[Assets Guide](assets/README.md)** - Panduan penggunaan folder assets
 
 </details>
@@ -68,7 +68,7 @@ Laporan praktikum dimulai dari **Week 5** hingga **Week 15**, sedangkan **Week 1
 |   8    | [API Endpoints & Architectural](/week-08/laporan-minggu-08.md) Patterns      | Penerapan pola REST, GraphQL, WebSocket, dan WebHook |   ✅   |
 |   9    | [Evaluasi Tengah Semester](/week-09-uts/laporan-minggu-09.md)                | Proyek mini untuk menilai pemahaman konsep dasar     |   ✅   |
 |   10   | Version Control & App Deployment                                             | Implementasi Git Workflow & deployment aplikasi      |   ⏳   |
-|   11   | MongoDB & NoSQL Databases                                                    | Integrasi MongoDB sebagai basis data aplikasi        |   ⏳   |
+|   11   | [MongoDB & NoSQL Databases](/week-11/laporan-minggu-10.md)                   | Integrasi MongoDB sebagai basis data aplikasi        |   ✅   |
 |   12   | NoSQL Databases (Lanjutan)                                                   | Query lanjutan dan integrasi REST API                |   ⏳   |
 |   13   | Protokol Email (SMTP, POP3, IMAP)                                            | Simulasi sistem pengiriman dan penerimaan email      |   ⏳   |
 |   14   | Socket Programming                                                           | Implementasi komunikasi real-time berbasis socket    |   ⏳   |
